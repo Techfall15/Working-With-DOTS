@@ -1,0 +1,4 @@
+repository "Working With DOTS@Techfall@cloud"
+  path "/"
+    br "/main"
+    co "/main"
