@@ -72,13 +72,13 @@
     <Analyzer Include="C:\Users\marti\Working With DOTS\Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities\SourceGenerators\Unity.Entities.SourceGen.JobEntityGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSpeed.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSystem.cs" />
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSpeedAuthoring.cs" />
-    <Compile Include="Assets\Scripts\Capsules\CapsueMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeed.cs" />
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSquareSystem.cs" />

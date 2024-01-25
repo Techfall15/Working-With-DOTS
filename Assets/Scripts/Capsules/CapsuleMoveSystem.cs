@@ -6,7 +6,7 @@ using Unity.Transforms;
 using Unity.Mathematics;
 
 
-public partial struct CapsueMoveSystem : ISystem
+public partial struct CapsuleMoveSystem : ISystem
 {
     
     public void OnUpdate(ref SystemState state)
