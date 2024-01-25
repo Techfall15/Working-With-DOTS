@@ -77,7 +77,10 @@
     <Compile Include="Assets\Scripts\Triangles\TriRotateSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSystem.cs" />
+    <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSpeedAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Capsules\CapsueMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeed.cs" />
+    <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSquareSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleSlidingSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeed.cs" />
