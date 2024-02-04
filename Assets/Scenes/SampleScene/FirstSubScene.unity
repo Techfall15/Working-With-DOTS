@@ -150,8 +150,8 @@ Transform:
   m_GameObject: {fileID: 1006196559}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1340454249}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f2247e5c9c0b845a915de22fe4afca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillPosition: {x: -0.05, y: 0, z: 0}
+  fillPosition: {x: 0, y: 0, z: 0}
   fillScale: {x: 0.9, y: 0.1, z: 1}
 --- !u!1 &1340454248
 GameObject:
@@ -284,9 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7316a428ab8f3419c5405f6391ccba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthLeft: 0
   minHealth: 0
-  maxHealth: 0
+  maxHealth: 10
+  healthLeft: 10
 --- !u!4 &1453867176
 Transform:
   m_ObjectHideFlags: 0

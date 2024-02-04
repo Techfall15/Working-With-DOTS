@@ -1,9 +1,10 @@
 using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Entities.UI;
 public class FillAuthoring : MonoBehaviour
 {
-
+    
     public Vector3 fillPosition;
     public Vector3 fillScale;
 
