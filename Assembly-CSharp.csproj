@@ -82,8 +82,10 @@
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeedAuthoring.cs" />
+    <Compile Include="Assets\Scripts\ObjEntity\ObjEntitySpeed.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSystem.cs" />
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSpeedAuthoring.cs" />
+    <Compile Include="Assets\Scripts\ObjEntity\ObjEntityAuthoring.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeed.cs" />
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMoveAuthoring.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeed.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMoveSpeed.cs" />
+    <Compile Include="Assets\Scripts\ObjEntity\ObjEntityMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSpeed.cs" />
   </ItemGroup>
   <ItemGroup>
