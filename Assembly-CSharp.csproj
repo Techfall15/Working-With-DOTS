@@ -72,6 +72,8 @@
     <Analyzer Include="C:\Users\marti\Working With DOTS\Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities\SourceGenerators\Unity.Entities.SourceGen.JobEntityGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\InputSystem.cs" />
+    <Compile Include="Assets\Input\InputMap.cs" />
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSpeedAuthoring.cs" />
@@ -84,11 +86,15 @@
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeed.cs" />
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSpeed.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMoveAuthoring.cs" />
+    <Compile Include="Assets\Scripts\InputData.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSquareSystem.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleSlidingSystem.cs" />
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeed.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSpeed.cs" />
   </ItemGroup>
   <ItemGroup>
