@@ -17,10 +17,7 @@ public partial struct ObjEntityMoveSystem : ISystem
             var deltaTime = SystemAPI.Time.DeltaTime;
 
             if (move.x == 0) continue;
-            myLocalTransform.ValueRW = myLocalTransform.ValueRO.Translate(new float3(
-                move.x * speed * deltaTime,
-                0,
-                0));
+            myLocalTransform.ValueRW = myLocalTransform.ValueRO.Translate(new float3(move.x * speed * deltaTime, 0, 0));
         };
 
     }
