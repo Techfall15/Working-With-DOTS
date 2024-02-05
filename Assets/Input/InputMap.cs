@@ -35,6 +35,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DamageAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc83afe8-bc83-41ec-8044-91bc40118f56"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -92,6 +101,17 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""MoveAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb31fdcc-bcae-4f96-a728-4c232f46956e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardInputs"",
+                    ""action"": ""DamageAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -107,6 +127,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         // KeyboardMap
         m_KeyboardMap = asset.FindActionMap("KeyboardMap", throwIfNotFound: true);
         m_KeyboardMap_MoveAction = m_KeyboardMap.FindAction("MoveAction", throwIfNotFound: true);
+        m_KeyboardMap_DamageAction = m_KeyboardMap.FindAction("DamageAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -169,11 +190,13 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_KeyboardMap;
     private List<IKeyboardMapActions> m_KeyboardMapActionsCallbackInterfaces = new List<IKeyboardMapActions>();
     private readonly InputAction m_KeyboardMap_MoveAction;
+    private readonly InputAction m_KeyboardMap_DamageAction;
     public struct KeyboardMapActions
     {
         private @InputMap m_Wrapper;
         public KeyboardMapActions(@InputMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveAction => m_Wrapper.m_KeyboardMap_MoveAction;
+        public InputAction @DamageAction => m_Wrapper.m_KeyboardMap_DamageAction;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -186,6 +209,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @MoveAction.started += instance.OnMoveAction;
             @MoveAction.performed += instance.OnMoveAction;
             @MoveAction.canceled += instance.OnMoveAction;
+            @DamageAction.started += instance.OnDamageAction;
+            @DamageAction.performed += instance.OnDamageAction;
+            @DamageAction.canceled += instance.OnDamageAction;
         }
 
         private void UnregisterCallbacks(IKeyboardMapActions instance)
@@ -193,6 +219,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @MoveAction.started -= instance.OnMoveAction;
             @MoveAction.performed -= instance.OnMoveAction;
             @MoveAction.canceled -= instance.OnMoveAction;
+            @DamageAction.started -= instance.OnDamageAction;
+            @DamageAction.performed -= instance.OnDamageAction;
+            @DamageAction.canceled -= instance.OnDamageAction;
         }
 
         public void RemoveCallbacks(IKeyboardMapActions instance)
@@ -222,5 +251,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     public interface IKeyboardMapActions
     {
         void OnMoveAction(InputAction.CallbackContext context);
+        void OnDamageAction(InputAction.CallbackContext context);
     }
 }

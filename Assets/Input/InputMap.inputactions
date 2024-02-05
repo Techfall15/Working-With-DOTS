@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "DamageAction",
+                    "type": "Button",
+                    "id": "bc83afe8-bc83-41ec-8044-91bc40118f56",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -70,6 +79,17 @@
                     "action": "MoveAction",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "fb31fdcc-bcae-4f96-a728-4c232f46956e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardInputs",
+                    "action": "DamageAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

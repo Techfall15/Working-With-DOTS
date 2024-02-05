@@ -40,9 +40,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 653
+    y: 877
     width: 1234
-    height: 294
+    height: 70
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 22}
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 156
+  controlID: 82
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -318,7 +318,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1234
-    height: 653
+    height: 877
   m_MinSize: {x: 602, y: 371}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
@@ -352,7 +352,7 @@ MonoBehaviour:
     x: 265
     y: 73
     width: 1232
-    height: 719
+    height: 856
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -387,9 +387,9 @@ MonoBehaviour:
     m_SearchString: 
   m_ActionsTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: da8c3944
-    m_LastClickedID: 1144622298
-    m_ExpandedIDs: fc0bc8a40c21a1ceda8c3944
+    m_SelectedIDs: ab467117
+    m_LastClickedID: 393299627
+    m_ExpandedIDs: fc0bc8a40c21a1ceab467117da8c3944
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -419,6 +419,12 @@ MonoBehaviour:
       - itemId: 378383742
         selectedIndex: -1
         scroll: {x: 0, y: 0}
+      - itemId: 82801685
+        selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: 403810634
+        selectedIndex: 0
+        scroll: {x: 0, y: 0}
     m_ManualPathEditMode: 0
   m_ActionAssetManager:
     m_AssetObjectForEditing: {fileID: 0}
@@ -430,15 +436,19 @@ MonoBehaviour:
       \"type\": \"Value\",\n                    \"id\": \"0e03dd8e-6104-4b16-a098-7009d62fade8\",\n                   
       \"expectedControlType\": \"Vector2\",\n                    \"processors\":
       \"\",\n                    \"interactions\": \"\",\n                    \"initialStateCheck\":
-      true\n                }\n            ],\n            \"bindings\": [\n               
-      {\n                    \"name\": \"WASD Movement\",\n                    \"id\":
-      \"3d91bccd-5994-4068-a513-c95f267a0966\",\n                    \"path\": \"2DVector\",\n                   
-      \"interactions\": \"\",\n                    \"processors\": \"\",\n                   
-      \"groups\": \"\",\n                    \"action\": \"MoveAction\",\n                   
-      \"isComposite\": true,\n                    \"isPartOfComposite\": false\n               
-      },\n                {\n                    \"name\": \"up\",\n                   
-      \"id\": \"69060a60-33ed-4df9-8afc-b1bbe36c1c8c\",\n                    \"path\":
-      \"<Keyboard>/w\",\n                    \"interactions\": \"\",\n                   
+      true\n                },\n                {\n                    \"name\":
+      \"DamageAction\",\n                    \"type\": \"Button\",\n                   
+      \"id\": \"bc83afe8-bc83-41ec-8044-91bc40118f56\",\n                    \"expectedControlType\":
+      \"Button\",\n                    \"processors\": \"\",\n                   
+      \"interactions\": \"\",\n                    \"initialStateCheck\": false\n               
+      }\n            ],\n            \"bindings\": [\n                {\n                   
+      \"name\": \"WASD Movement\",\n                    \"id\": \"3d91bccd-5994-4068-a513-c95f267a0966\",\n                   
+      \"path\": \"2DVector\",\n                    \"interactions\": \"\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"\",\n                   
+      \"action\": \"MoveAction\",\n                    \"isComposite\": true,\n                   
+      \"isPartOfComposite\": false\n                },\n                {\n                   
+      \"name\": \"up\",\n                    \"id\": \"69060a60-33ed-4df9-8afc-b1bbe36c1c8c\",\n                   
+      \"path\": \"<Keyboard>/w\",\n                    \"interactions\": \"\",\n                   
       \"processors\": \"\",\n                    \"groups\": \"KeyboardInputs\",\n                   
       \"action\": \"MoveAction\",\n                    \"isComposite\": false,\n                   
       \"isPartOfComposite\": true\n                },\n                {\n                   
@@ -456,7 +466,12 @@ MonoBehaviour:
       \"path\": \"<Keyboard>/d\",\n                    \"interactions\": \"\",\n                   
       \"processors\": \"\",\n                    \"groups\": \"KeyboardInputs\",\n                   
       \"action\": \"MoveAction\",\n                    \"isComposite\": false,\n                   
-      \"isPartOfComposite\": true\n                }\n            ]\n        }\n   
+      \"isPartOfComposite\": true\n                },\n                {\n                   
+      \"name\": \"\",\n                    \"id\": \"fb31fdcc-bcae-4f96-a728-4c232f46956e\",\n                   
+      \"path\": \"<Keyboard>/space\",\n                    \"interactions\": \"\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"KeyboardInputs\",\n                   
+      \"action\": \"DamageAction\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                }\n            ]\n        }\n   
       ],\n    \"controlSchemes\": [\n        {\n            \"name\": \"KeyboardInputs\",\n           
       \"bindingGroup\": \"KeyboardInputs\",\n            \"devices\": []\n       
       }\n    ]\n}"
@@ -548,7 +563,7 @@ MonoBehaviour:
     x: 265
     y: 73
     width: 1232
-    height: 632
+    height: 856
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -652,18 +667,18 @@ MonoBehaviour:
     m_ExpandedIDs: ffffffff0000000086820000888200008a820000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: HealthBarSystem
+      m_OriginalName: HealthBarSystem
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 36174
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
@@ -789,9 +804,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 10fbffff12fbffff4a8000001282000016820000
+      m_SelectedIDs: 16820000
+      m_LastClickedID: 33302
+      m_ExpandedIDs: fcfaffff02fbffff10fbffff12fbffff4a80000012820000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1299,7 +1314,7 @@ MonoBehaviour:
     x: 265
     y: 73
     width: 1232
-    height: 632
+    height: 856
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1353,22 +1368,22 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 1232
-      height: 611
-    m_Scale: {x: 0.63645834, y: 0.63645834}
-    m_Translation: {x: 616, y: 305.5}
+      height: 835
+    m_Scale: {x: 0.8697917, y: 0.8697917}
+    m_Translation: {x: 616, y: 417.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -967.85596
+      x: -708.2156
       y: -480
-      width: 1935.7119
+      width: 1416.4312
       height: 960
     m_MinimalGUI: 1
-  m_defaultScale: 0.63645834
-  m_LastWindowPixelSize: {x: 1232, y: 632}
+  m_defaultScale: 0.8697917
+  m_LastWindowPixelSize: {x: 1232, y: 856}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -1395,9 +1410,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 265
-    y: 726
+    y: 950
     width: 1232
-    height: 273
+    height: 49
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0

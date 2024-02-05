@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Triangles\TriRotateSpeed.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\FillData.cs" />
+    <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarSystem.cs" />
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\FillSystem.cs" />

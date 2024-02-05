@@ -207,6 +207,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
+--- !u!4 &622803076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 376339917850962764, guid: 5ff45b894e42e674e8135c23e41dffff, type: 3}
+  m_PrefabInstance: {fileID: 3399748633858753064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1006196559
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minHealth: 0
   maxHealth: 10
-  healthLeft: 4.64
+  healthLeft: 10
 --- !u!4 &1453867176
 Transform:
   m_ObjectHideFlags: 0
@@ -380,13 +385,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453867174}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1340454249}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 622803076}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1541170117
 GameObject:
@@ -583,7 +588,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 376339917850962764, guid: 5ff45b894e42e674e8135c23e41dffff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1453867176}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ff45b894e42e674e8135c23e41dffff, type: 3}
 --- !u!1660057539 &9223372036854775807
@@ -592,4 +600,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 3399748633858753064}
   - {fileID: 2935691626518410971}
-  - {fileID: 1453867176}

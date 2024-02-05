@@ -23,6 +23,10 @@ public class HealthBarAuthoring : MonoBehaviour
                 maxHealth = authoring.maxHealth
             });
 
+            AddComponent(entity, new InputData
+            {
+
+            });
         }
     }
 
