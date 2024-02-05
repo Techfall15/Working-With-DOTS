@@ -9,6 +9,11 @@ using Unity.Collections;
 
 public partial struct FillSystem : ISystem
 {
+    public void OnCreate(ref SystemState state)
+    {
+        state.RequireForUpdate<FillData>();
+    }
+
     public void OnUpdate(ref SystemState state)
     {
         NativeArray<float> newScale = new NativeArray<float>(1, Allocator.TempJob);
@@ -47,7 +52,7 @@ public partial struct FillSystem : ISystem
             newScale[0] = healthBarData.healthLeft / healthBarData.maxHealth;
         }
     }
-    public partial struct GetNewXPosJob : IJobEntity
+    public partial struct GetNewXPosJob : IJob
     {
         public float scale;
         public NativeArray<float> newXPos;
