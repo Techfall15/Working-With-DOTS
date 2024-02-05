@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Unity.Entities;
 using Unity.Transforms;
 using Unity.Mathematics;
 public readonly partial struct PlayerAspect : IAspect
 {
-
     public readonly RefRO<PlayerMoveSpeed>  playerMoveSpeed;
     public readonly RefRW<LocalTransform>   localTransform;
     public readonly RefRO<InputData>        inputData;

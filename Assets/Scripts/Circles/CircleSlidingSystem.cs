@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Unity.Entities;
 using Unity.Transforms;
 using Unity.Mathematics;
+using Unity.Burst;
 
 public partial struct CircleSlidingSystem : ISystem
 {
     public void OnUpdate(ref SystemState state)
     {
-
-        foreach((RefRW<LocalTransform> myLocalTransform, RefRO<SlidingSpeed> slidingSpeed)
-            in SystemAPI.Query<RefRW<LocalTransform>, RefRO<SlidingSpeed>>())
-        {
-            myLocalTransform.ValueRW = myLocalTransform.ValueRO.Translate(new float3(
-                slidingSpeed.ValueRO.slideSpeed * SystemAPI.Time.DeltaTime,
-                0,
-                0));
-        }
-
-
+        CircleSlideJob circleSlideJob = new CircleSlideJob { deltaTime = SystemAPI.Time.DeltaTime };
+        circleSlideJob.Schedule();
     }
 
 
 
+}
+[BurstCompile]
+public partial struct CircleSlideJob : IJobEntity
+{
+    public float deltaTime;
+    public void Execute(ref LocalTransform localTransform, in SlidingSpeed slideSpeed)
+    {
+        localTransform = localTransform.Translate(new float3(
+                slideSpeed.slideSpeed * deltaTime,
+                0,
+                0));
+    }
 }

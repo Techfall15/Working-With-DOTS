@@ -18,8 +18,9 @@ public partial class InputSystem : SystemBase
     {
         foreach(RefRW<InputData> myInputData in SystemAPI.Query<RefRW<InputData>>())
         {
-            myInputData.ValueRW.move = myInputMap.KeyboardMap.MoveAction.ReadValue<Vector2>();
-            myInputData.ValueRW.damage = myInputMap.KeyboardMap.DamageAction.WasPressedThisFrame();
+            myInputData.ValueRW.move    = myInputMap.KeyboardMap.MoveAction.ReadValue<Vector2>();
+            myInputData.ValueRW.shoot   = myInputMap.KeyboardMap.ShootAction.WasPressedThisFrame();
+            myInputData.ValueRW.damage  = myInputMap.KeyboardMap.DamageAction.WasPressedThisFrame();
         }
     }
 

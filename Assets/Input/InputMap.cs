@@ -44,6 +44,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShootAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b95c75d-843d-4b43-95f2-ea5666d89b9c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""DamageAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d2775de-0e66-463b-81a9-b9fa120cb532"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardInputs"",
+                    ""action"": ""ShootAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -128,6 +148,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_KeyboardMap = asset.FindActionMap("KeyboardMap", throwIfNotFound: true);
         m_KeyboardMap_MoveAction = m_KeyboardMap.FindAction("MoveAction", throwIfNotFound: true);
         m_KeyboardMap_DamageAction = m_KeyboardMap.FindAction("DamageAction", throwIfNotFound: true);
+        m_KeyboardMap_ShootAction = m_KeyboardMap.FindAction("ShootAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -191,12 +212,14 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private List<IKeyboardMapActions> m_KeyboardMapActionsCallbackInterfaces = new List<IKeyboardMapActions>();
     private readonly InputAction m_KeyboardMap_MoveAction;
     private readonly InputAction m_KeyboardMap_DamageAction;
+    private readonly InputAction m_KeyboardMap_ShootAction;
     public struct KeyboardMapActions
     {
         private @InputMap m_Wrapper;
         public KeyboardMapActions(@InputMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveAction => m_Wrapper.m_KeyboardMap_MoveAction;
         public InputAction @DamageAction => m_Wrapper.m_KeyboardMap_DamageAction;
+        public InputAction @ShootAction => m_Wrapper.m_KeyboardMap_ShootAction;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -212,6 +235,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @DamageAction.started += instance.OnDamageAction;
             @DamageAction.performed += instance.OnDamageAction;
             @DamageAction.canceled += instance.OnDamageAction;
+            @ShootAction.started += instance.OnShootAction;
+            @ShootAction.performed += instance.OnShootAction;
+            @ShootAction.canceled += instance.OnShootAction;
         }
 
         private void UnregisterCallbacks(IKeyboardMapActions instance)
@@ -222,6 +248,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @DamageAction.started -= instance.OnDamageAction;
             @DamageAction.performed -= instance.OnDamageAction;
             @DamageAction.canceled -= instance.OnDamageAction;
+            @ShootAction.started -= instance.OnShootAction;
+            @ShootAction.performed -= instance.OnShootAction;
+            @ShootAction.canceled -= instance.OnShootAction;
         }
 
         public void RemoveCallbacks(IKeyboardMapActions instance)
@@ -252,5 +281,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     {
         void OnMoveAction(InputAction.CallbackContext context);
         void OnDamageAction(InputAction.CallbackContext context);
+        void OnShootAction(InputAction.CallbackContext context);
     }
 }

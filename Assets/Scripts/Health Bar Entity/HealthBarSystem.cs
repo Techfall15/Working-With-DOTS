@@ -9,7 +9,6 @@ public partial struct HealthBarSystem : ISystem
     public void OnUpdate(ref SystemState state)
     {
         ReduceHealthJob reduceHealthJob = new ReduceHealthJob { damageAmount = 2 };
-
         reduceHealthJob.Schedule();
     }
 

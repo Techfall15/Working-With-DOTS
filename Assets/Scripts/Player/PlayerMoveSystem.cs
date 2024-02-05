@@ -1,6 +1,5 @@
 using Unity.Entities;
-using Unity.Transforms;
-using Unity.Mathematics;
+using Unity.Burst;
 
 public partial struct PlayerMoveSystem : ISystem
 {
@@ -14,6 +13,7 @@ public partial struct PlayerMoveSystem : ISystem
 
 }
 
+[BurstCompile]
 public partial struct PlayerMoveJob : IJobEntity
 {
     public float deltaTime;
