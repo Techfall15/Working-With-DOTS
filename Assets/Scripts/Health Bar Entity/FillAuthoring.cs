@@ -20,11 +20,8 @@ public class FillAuthoring : MonoBehaviour
                 fillPosition = authoring.fillPosition,
                 fillScale = authoring.fillScale,
             });
+            
 
         }
     }
-
-
-
-
 }
