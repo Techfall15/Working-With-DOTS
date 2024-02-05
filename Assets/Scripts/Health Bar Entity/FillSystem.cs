@@ -47,19 +47,13 @@ public partial struct FillSystem : ISystem
     public partial struct GetNewScaleJob : IJobEntity
     {
         public NativeArray<float> newScale;
-        public void Execute(in HealthBarData healthBarData)
-        {
-            newScale[0] = healthBarData.healthLeft / healthBarData.maxHealth;
-        }
+        public void Execute(in HealthBarData healthBarData) => newScale[0] = healthBarData.healthLeft / healthBarData.maxHealth;
     }
     public partial struct GetNewXPosJob : IJob
     {
         public float scale;
         public NativeArray<float> newXPos;
-        public void Execute()
-        {
-            newXPos[0] = (1f - scale) / 4f * -1;
-        }
+        public void Execute() => newXPos[0] = (1f - scale) / 4f * -1;
     }
     public partial struct ModifyFillDataJob : IJobEntity
     {
