@@ -12,6 +12,12 @@ using Unity.Collections;
 public partial struct PlayerScoreSystem : ISystem
 {
 
+    public void OnCreate(ref SystemState state)
+    {
+        state.RequireForUpdate<PlayerScoreData>();
+    }
+
+
     [BurstCompile]
     public partial struct PlayerScoreTriggerEvents : ITriggerEventsJob
     {

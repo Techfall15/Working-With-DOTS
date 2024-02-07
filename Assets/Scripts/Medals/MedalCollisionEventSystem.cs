@@ -1,4 +1,3 @@
-using UnityEngine;
 using Unity.Entities;
 using Unity.Physics;
 using Unity.Burst;
@@ -6,13 +5,19 @@ using Unity.Physics.Systems;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Transforms;
-using Unity.Mathematics;
 
 [UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateAfter(typeof(PhysicsInitializeGroup))]
 [UpdateAfter(typeof(PhysicsSimulationGroup))]
 public partial struct MedalCollisionEventsSystem : ISystem
 {
+    public void OnCreate(ref SystemState state)
+    {
+        state.RequireForUpdate<MedalData>();
+    }
+
+
+
     [BurstCompile]
     public partial struct MedalCollisionEvents : ITriggerEventsJob
     {

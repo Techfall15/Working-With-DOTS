@@ -1,7 +1,7 @@
 using Unity.Entities;
 using Unity.Transforms;
 using Unity.Mathematics;
-using UnityEngine.Animations;
+using Unity.Collections;
 
 public partial struct PlayerShootSystem : ISystem
 {
@@ -11,6 +11,14 @@ public partial struct PlayerShootSystem : ISystem
     }
     public void OnUpdate(ref SystemState state)
     {
+        
+        NativeArray<Entity> newMedals = new NativeArray<Entity>(1, Allocator.TempJob);
+        SpawnNewMedalJob spawnNewMedalJob = new SpawnNewMedalJob
+        {
+            entityManager = state.EntityManager,
+            newMedals = newMedals
+        };
+
         foreach(var(localTransform, playerShootComponent, inputData) 
             in SystemAPI.Query<RefRO<LocalTransform>, RefRO<PlayerShootComponent>, RefRW<InputData>>())
         {
@@ -24,19 +32,32 @@ public partial struct PlayerShootSystem : ISystem
             Entity newObj = state.EntityManager.Instantiate(playerShootComponent.ValueRO.objToSpawnEntity);
             state.EntityManager.SetComponentData<LocalTransform>(newObj, newSpawnTransform);
         }
-        foreach(var(localTransform, playerSpawnComponent, inputData)
-            in SystemAPI.Query<RefRO<LocalTransform>, RefRO<PlayerSpawnComponent>, RefRW<InputData>>())
+        spawnNewMedalJob.Schedule(state.Dependency).Complete();
+        if (state.EntityManager.HasComponent<MedalData>(newMedals[0]))
         {
-            if (inputData.ValueRO.spawnMedal == false) continue;
-            LocalTransform newMedalTransform = new LocalTransform
+            state.EntityManager.Instantiate(newMedals[0]);
+            foreach((RefRW<LocalTransform> localTransform, RefRO<MedalData> medalData) in SystemAPI.Query<RefRW<LocalTransform>, RefRO<MedalData>>())
             {
-                Position = new float3(-3f, -3f, 0f),
-                Rotation = quaternion.identity,
-                Scale = 1f
-            };
-            Entity newMedal = state.EntityManager.Instantiate(playerSpawnComponent.ValueRO.medalToSpawnEntity);
-            state.EntityManager.SetComponentData<LocalTransform>(newMedal, newMedalTransform);
+                localTransform.ValueRW = new LocalTransform
+                {
+                    Position = new float3(-3, -3, -3),
+                    Rotation = quaternion.identity,
+                    Scale = 1f,
+                };
+            }
         }
+        newMedals.Dispose();
     }
 
+}
+public partial struct SpawnNewMedalJob : IJobEntity
+{
+    public NativeArray<Entity> newMedals;
+    public EntityManager entityManager;
+    public void Execute(in PlayerSpawnComponent playerSpawnComponent, ref InputData inputData)
+    {
+        if (inputData.spawnMedal == false) return;
+        Entity newMedal = playerSpawnComponent.medalToSpawnEntity;
+        newMedals[0] = newMedal;
+    }
 }
