@@ -15,6 +15,11 @@ public class MedalAuthoring : MonoBehaviour
             {
                 scoreValue = authoring.scoreValue,
             });
+            AddComponent(entity, new TriggerComponent());
         }
     }
+}
+public partial struct TriggerComponent : IComponentData
+{
+
 }

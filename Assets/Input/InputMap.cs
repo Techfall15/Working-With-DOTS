@@ -53,6 +53,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpawnMedalAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e876d48-bbbe-4148-87be-728aeebcf2a8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""ShootAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8421cd7-4ee8-437f-b77c-d13ec51c1575"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardInputs"",
+                    ""action"": ""SpawnMedalAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -149,6 +169,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_KeyboardMap_MoveAction = m_KeyboardMap.FindAction("MoveAction", throwIfNotFound: true);
         m_KeyboardMap_DamageAction = m_KeyboardMap.FindAction("DamageAction", throwIfNotFound: true);
         m_KeyboardMap_ShootAction = m_KeyboardMap.FindAction("ShootAction", throwIfNotFound: true);
+        m_KeyboardMap_SpawnMedalAction = m_KeyboardMap.FindAction("SpawnMedalAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -213,6 +234,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardMap_MoveAction;
     private readonly InputAction m_KeyboardMap_DamageAction;
     private readonly InputAction m_KeyboardMap_ShootAction;
+    private readonly InputAction m_KeyboardMap_SpawnMedalAction;
     public struct KeyboardMapActions
     {
         private @InputMap m_Wrapper;
@@ -220,6 +242,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @MoveAction => m_Wrapper.m_KeyboardMap_MoveAction;
         public InputAction @DamageAction => m_Wrapper.m_KeyboardMap_DamageAction;
         public InputAction @ShootAction => m_Wrapper.m_KeyboardMap_ShootAction;
+        public InputAction @SpawnMedalAction => m_Wrapper.m_KeyboardMap_SpawnMedalAction;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -238,6 +261,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @ShootAction.started += instance.OnShootAction;
             @ShootAction.performed += instance.OnShootAction;
             @ShootAction.canceled += instance.OnShootAction;
+            @SpawnMedalAction.started += instance.OnSpawnMedalAction;
+            @SpawnMedalAction.performed += instance.OnSpawnMedalAction;
+            @SpawnMedalAction.canceled += instance.OnSpawnMedalAction;
         }
 
         private void UnregisterCallbacks(IKeyboardMapActions instance)
@@ -251,6 +277,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @ShootAction.started -= instance.OnShootAction;
             @ShootAction.performed -= instance.OnShootAction;
             @ShootAction.canceled -= instance.OnShootAction;
+            @SpawnMedalAction.started -= instance.OnSpawnMedalAction;
+            @SpawnMedalAction.performed -= instance.OnSpawnMedalAction;
+            @SpawnMedalAction.canceled -= instance.OnSpawnMedalAction;
         }
 
         public void RemoveCallbacks(IKeyboardMapActions instance)
@@ -282,5 +311,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnMoveAction(InputAction.CallbackContext context);
         void OnDamageAction(InputAction.CallbackContext context);
         void OnShootAction(InputAction.CallbackContext context);
+        void OnSpawnMedalAction(InputAction.CallbackContext context);
     }
 }
