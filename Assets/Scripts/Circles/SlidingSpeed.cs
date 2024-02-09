@@ -7,5 +7,5 @@ public struct SlidingSpeed : IComponentData
 {
 
     public float slideSpeed;
-    
+    public bool isMovingRight;
 }

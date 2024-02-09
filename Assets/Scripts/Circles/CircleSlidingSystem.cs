@@ -20,9 +20,7 @@ public partial struct CircleSlideJob : IJobEntity
     public float deltaTime;
     public void Execute(ref LocalTransform localTransform, in SlidingSpeed slideSpeed)
     {
-        localTransform = localTransform.Translate(new float3(
-                slideSpeed.slideSpeed * deltaTime,
-                0,
-                0));
+        
+        localTransform = (slideSpeed.isMovingRight == true) ? localTransform.Translate(new float3(slideSpeed.slideSpeed * deltaTime,0,0)) : localTransform.Translate(new float3(-slideSpeed.slideSpeed * deltaTime, 0, 0));
     }
 }
