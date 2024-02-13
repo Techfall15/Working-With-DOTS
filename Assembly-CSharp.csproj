@@ -76,10 +76,12 @@
     <Compile Include="Assets\Scripts\Player\PlayerScoreSystem.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShootSystem.cs" />
     <Compile Include="Assets\Scripts\InputSystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\Movement\MoveWithKeyboardData.cs" />
     <Compile Include="Assets\Input\InputMap.cs" />
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSpeedAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\Movement\MoveWithKeyboardSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationRowAuthoring.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSpeed.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationRowData.cs" />
@@ -94,8 +96,8 @@
     <Compile Include="Assets\Scripts\Beam\BeamCounterAuthoring.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\Spawning\SpawnNewEntityAuthoring.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamCounterController.cs" />
-    <Compile Include="Assets\Scripts\Basic\MoveWithKeyboardSystem.cs" />
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntitySpeed.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSystem.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamData.cs" />
@@ -106,9 +108,8 @@
     <Compile Include="Assets\Scripts\Medals\MedalData.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShootAuthoring.cs" />
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntityAuthoring.cs" />
-    <Compile Include="Assets\Scripts\Basic\MoveWithKeyboardData.cs" />
-    <Compile Include="Assets\Scripts\Basic\MoveWithKeyboardAspect.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\Spawning\SpawnNewEntitySystem.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamCounterData.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeed.cs" />
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSpeed.cs" />
@@ -119,9 +120,11 @@
     <Compile Include="Assets\Scripts\Beam\BeamSpawnerData.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSquareSystem.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarData.cs" />
-    <Compile Include="Assets\Scripts\Basic\MoveWithKeyboardAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreData.cs" />
+    <Compile Include="Assets\Scripts\Basic\Movement\MoveWithKeyboardAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\Movement\MoveWithKeyboardAspect.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMoveSystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\Spawning\SpawnNewEntityData.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleSlidingSystem.cs" />
