@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Beam\BeamDespawnSystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\Destroying\OffScreenDestroySystem.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreSystem.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShootSystem.cs" />
     <Compile Include="Assets\Scripts\InputSystem.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntitySpeed.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSystem.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamData.cs" />
+    <Compile Include="Assets\Scripts\Basic\Destroying\OffScreenDestroyTag.cs" />
     <Compile Include="Assets\Scripts\Medals\MedalSpawnSystem.cs" />
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamSpawnSystem.cs" />

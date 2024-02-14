@@ -7,7 +7,7 @@ public class BeamAuthoring : MonoBehaviour
 {
 
     public float moveSpeed = 2f;
-    public float xLimit = 5f;
+    public float xLimit = 8f;
 
     public class BeamBaker : Baker<BeamAuthoring>
     {

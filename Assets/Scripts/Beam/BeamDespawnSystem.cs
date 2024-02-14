@@ -19,7 +19,7 @@ public partial struct BeamDespawnSystem : ISystem
         {
             if(localTransform.ValueRO.Position.x > beamData.ValueRO.xLimit)
             {
-                ecb.DestroyEntity(entity);
+                ecb.AddComponent<OffScreenDestroyTag>(entity);
                 increaseBeamCountJob.Schedule(state.Dependency).Complete();
             }
         }
