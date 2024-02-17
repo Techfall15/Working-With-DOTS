@@ -7,4 +7,5 @@ public struct InputData : IComponentData
     public bool damage;
     public bool shoot;
     public bool spawnMedal;
+    public bool openChest;
 }

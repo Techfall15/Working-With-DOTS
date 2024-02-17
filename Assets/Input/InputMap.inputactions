@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpenChestAction",
+                    "type": "Button",
+                    "id": "efafa619-bb64-4c3c-a4c3-77ea25073b65",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -128,6 +137,17 @@
                     "processors": "",
                     "groups": "KeyboardInputs",
                     "action": "SpawnMedalAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe729cf3-1499-40c5-ae5a-569fae627096",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardInputs",
+                    "action": "OpenChestAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
