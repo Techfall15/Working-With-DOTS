@@ -1,8 +1,6 @@
 using UnityEngine;
 using Unity.Entities;
-using Unity.Rendering;
-using Unity.Transforms;
-using System.Collections.Generic;
+
 
 public class TreasureChestAuthoring : MonoBehaviour
 {
@@ -29,8 +27,11 @@ public class TreasureChestAuthoring : MonoBehaviour
             {
                 spriteList = authoring.spriteList
             });
-
             AddComponent(entity, new InputData()
+            {
+
+            });
+            AddComponent(entity, new TriggerComponent()
             {
 
             });

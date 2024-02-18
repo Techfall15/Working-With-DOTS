@@ -5,6 +5,14 @@ using Unity.Burst;
 
 public partial struct CircleSlidingSystem : ISystem
 {
+
+    public void OnCreate(ref SystemState state)
+    {
+        state.RequireForUpdate<SlidingSpeed>();
+    }
+
+
+
     public void OnUpdate(ref SystemState state)
     {
         CircleSlideJob circleSlideJob = new CircleSlideJob { deltaTime = SystemAPI.Time.DeltaTime };

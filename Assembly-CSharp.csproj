@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\InputSystem.cs" />
     <Compile Include="Assets\Scripts\Basic\Movement\MoveWithKeyboardData.cs" />
     <Compile Include="Assets\Input\InputMap.cs" />
+    <Compile Include="Assets\Scripts\Basic\Player\PlayerTagAuthoring.cs" />
     <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestData.cs" />
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeedAuthoring.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Scripts\Circles\CircleRotationRowData.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationSystem.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\Collision\TriggerComponentAuthoring.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\FillData.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarSystem.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamSpawnerAuthoring.cs" />
@@ -137,6 +139,7 @@
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeed.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAspect.cs" />
+    <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestCollisionEventSystem.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntityMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationAuthoring.cs" />
