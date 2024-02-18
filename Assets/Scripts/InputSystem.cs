@@ -23,6 +23,8 @@ public partial class InputSystem : SystemBase
             myInputData.ValueRW.damage      = myInputMap.KeyboardMap.DamageAction.WasPressedThisFrame();
             myInputData.ValueRW.spawnMedal  = myInputMap.KeyboardMap.SpawnMedalAction.WasPressedThisFrame();
             myInputData.ValueRW.openChest = myInputMap.KeyboardMap.OpenChestAction.WasPressedThisFrame();
+
+            
         }
     }
 

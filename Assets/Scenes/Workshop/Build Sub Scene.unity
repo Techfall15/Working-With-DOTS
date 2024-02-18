@@ -197,7 +197,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -529,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a11341a7ae5a445aa1283f1f255334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canOpen: 0
   isOpen: 0
   currentSpriteIndex: 0
   spriteList:
@@ -793,6 +794,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 215089843}
   - {fileID: 73897897}
+  - {fileID: 215089843}
   - {fileID: 632593025669012864}

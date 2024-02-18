@@ -4,10 +4,10 @@ using Unity.Entities;
 
 public class TreasureChestAuthoring : MonoBehaviour
 {
-    
 
-    public bool isOpen = false;
-    public int currentSpriteIndex = 0;
+    public bool     canOpen             = false;
+    public bool     isOpen              = false;
+    public int      currentSpriteIndex  = 0;
     public Sprite[] spriteList;
 
     public class TreasureChestBaker : Baker<TreasureChestAuthoring>
@@ -15,17 +15,18 @@ public class TreasureChestAuthoring : MonoBehaviour
 
         public override void Bake(TreasureChestAuthoring authoring)
         {
-            Entity entity = GetEntity(TransformUsageFlags.Renderable);
+            Entity entity           = GetEntity(TransformUsageFlags.Renderable);
+
 
             AddComponent(entity, new TreasureChestData()
             {
-                isOpen = authoring.isOpen,
-                currentSpriteIndex = authoring.currentSpriteIndex
+                canOpen             = authoring.canOpen,
+                isOpen              = authoring.isOpen,
+                currentSpriteIndex  = authoring.currentSpriteIndex
             });
-
             AddComponentObject(entity, new TreasureChestSpriteData()
             {
-                spriteList = authoring.spriteList
+                spriteList          = authoring.spriteList
             });
             AddComponent(entity, new InputData()
             {

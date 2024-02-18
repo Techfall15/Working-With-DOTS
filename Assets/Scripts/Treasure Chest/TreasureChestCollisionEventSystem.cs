@@ -36,7 +36,7 @@ public partial struct TreasureChestCollisionEventSystem : ISystem
     
     public void OnUpdate(ref SystemState state)
     {
-        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
+        
         NativeArray<int> testCounts     = new NativeArray<int>(1, Allocator.TempJob);
         NativeArray<Entity> entityArray = new NativeArray<Entity>(1, Allocator.TempJob);
 
@@ -49,24 +49,12 @@ public partial struct TreasureChestCollisionEventSystem : ISystem
         };
         job.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), state.Dependency).Complete();
 
-
-        if (testCounts[0] == 0)
+        foreach(RefRW<TreasureChestData> chestData in SystemAPI.Query<RefRW<TreasureChestData>>())
         {
-
-            //UnityEngine.Debug.Log(testCounts[0].ToString());
-            testCounts.Dispose();
-            entityArray.Dispose();
-            return;
+            chestData.ValueRW.canOpen = (testCounts[0] == 0) ? false : true;
         }
-
-        foreach ((RefRO<InputData> inputData, RefRW<TreasureChestData> chestData, Entity entity)
-            in SystemAPI.Query<RefRO<InputData>, RefRW<TreasureChestData>>().WithEntityAccess())
-        {
-            if (inputData.ValueRO.openChest)
-            {
-                chestData.ValueRW.isOpen = !chestData.ValueRO.isOpen;
-                chestData.ValueRW.currentSpriteIndex = (chestData.ValueRO.isOpen == true) ? 1 : 0;
-            }
-        }
+        
+        testCounts.Dispose();
+        entityArray.Dispose();
     }
 }

@@ -65,12 +65,12 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""OpenChestAction"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""efafa619-bb64-4c3c-a4c3-77ea25073b65"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
