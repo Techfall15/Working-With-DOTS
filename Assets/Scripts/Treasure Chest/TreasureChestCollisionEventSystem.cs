@@ -23,14 +23,18 @@ public partial struct TreasureChestCollisionEventSystem : ISystem
         public NativeArray<int>     testCount;
         public EntityManager        entityManager;
         public NativeArray<Entity>  entityArray;
+        
 
         public void Execute(TriggerEvent triggerEvent)
         {
             Entity entity = triggerEvent.EntityB;
 
-            if(entityManager.HasComponent<PlayerTagComponent>(triggerEvent.EntityA)) testCount[0] += 1;
+            if (entityManager.HasComponent<PlayerTagComponent>(triggerEvent.EntityA))
+            {
+                testCount[0] += 1;
+            }
             entityArray[0] = entity;
-
+            
         }
     }
     
@@ -49,10 +53,12 @@ public partial struct TreasureChestCollisionEventSystem : ISystem
         };
         job.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), state.Dependency).Complete();
 
-        foreach(RefRW<TreasureChestData> chestData in SystemAPI.Query<RefRW<TreasureChestData>>())
+        foreach(var(chestData, entity) in SystemAPI.Query<RefRW<TreasureChestData>>().WithEntityAccess())
         {
-            chestData.ValueRW.canOpen = (testCounts[0] == 0) ? false : true;
+            if (entity != entityArray[0])   chestData.ValueRW.canOpen = false;
+            else                            chestData.ValueRW.canOpen = true;
         }
+
         
         testCounts.Dispose();
         entityArray.Dispose();

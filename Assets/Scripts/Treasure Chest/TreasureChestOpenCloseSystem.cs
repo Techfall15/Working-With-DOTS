@@ -18,13 +18,15 @@ public partial struct TreasureChestOpenCloseSystem : ISystem
         {
             if (inputData.ValueRO.openChest && chestData.ValueRO.canOpen == true)
             {
-                chestData.ValueRW.isOpen = !chestData.ValueRO.isOpen;
-                chestData.ValueRW.currentSpriteIndex = (chestData.ValueRO.isOpen == true) ? 1 : 0;
+                chestData.ValueRW.canSpawnParticle      = (chestData.ValueRO.isOpen == false) ? true : false;
+                chestData.ValueRW.isOpen                = !chestData.ValueRO.isOpen;
+                chestData.ValueRW.currentSpriteIndex    = (chestData.ValueRO.isOpen == true) ? 1 : 0;
             }
-            SpriteRenderer renderer = state.EntityManager.GetComponentObject<SpriteRenderer>(entity);
-            TreasureChestSpriteData spriteData = state.EntityManager.GetComponentObject<TreasureChestSpriteData>(entity);
 
-            renderer.sprite = spriteData.spriteList[chestData.ValueRO.currentSpriteIndex];
+            SpriteRenderer renderer                     = state.EntityManager.GetComponentObject<SpriteRenderer>(entity);
+            TreasureChestSpriteData spriteData          = state.EntityManager.GetComponentObject<TreasureChestSpriteData>(entity);
+
+            renderer.sprite                             = spriteData.spriteList[chestData.ValueRO.currentSpriteIndex];
         }
     }
 }

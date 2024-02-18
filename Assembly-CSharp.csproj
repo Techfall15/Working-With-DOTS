@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestOpenCloseSystem.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamDespawnSystem.cs" />
     <Compile Include="Assets\Scripts\Basic\Destroying\OffScreenDestroySystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\Destroying\TimeDelayDestroyAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreSystem.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShootSystem.cs" />
     <Compile Include="Assets\Scripts\InputSystem.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Scripts\Basic\Movement\MoveWithKeyboardSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationRowAuthoring.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSpeed.cs" />
+    <Compile Include="Assets\Scripts\Basic\Destroying\TimeDelayDestroyData.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationRowData.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationSystem.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSystem.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerMoveAuthoring.cs" />
     <Compile Include="Assets\Scripts\InputData.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamSpawnerData.cs" />
+    <Compile Include="Assets\Scripts\Basic\Destroying\TimeDelayDestroySystem.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSquareSystem.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarData.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreData.cs" />
@@ -133,6 +136,7 @@
     <Compile Include="Assets\Scripts\Treasure Chest\OpenCloseAction.cs" />
     <Compile Include="Assets\Scripts\Basic\Spawning\SpawnNewEntityData.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamMoveSystem.cs" />
+    <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestParticleHandler.cs" />
     <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestAuthoring.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleSlidingSystem.cs" />

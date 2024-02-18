@@ -29,3 +29,7 @@ public partial struct PlayerTagComponent : IComponentData
 {
 
 }
+public partial struct PlayerCollisionTagComponent : IComponentData
+{
+
+}

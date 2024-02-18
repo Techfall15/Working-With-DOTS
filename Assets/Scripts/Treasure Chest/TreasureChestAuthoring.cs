@@ -4,11 +4,13 @@ using Unity.Entities;
 
 public class TreasureChestAuthoring : MonoBehaviour
 {
-
-    public bool     canOpen             = false;
-    public bool     isOpen              = false;
-    public int      currentSpriteIndex  = 0;
-    public Sprite[] spriteList;
+    
+    public bool         canOpen                 = false;
+    public bool         isOpen                  = false;
+    public bool         canSpawnParticle        = false;
+    public int          currentSpriteIndex      = 0;
+    public GameObject   particle;
+    public Sprite[]     spriteList;
 
     public class TreasureChestBaker : Baker<TreasureChestAuthoring>
     {
@@ -22,7 +24,9 @@ public class TreasureChestAuthoring : MonoBehaviour
             {
                 canOpen             = authoring.canOpen,
                 isOpen              = authoring.isOpen,
-                currentSpriteIndex  = authoring.currentSpriteIndex
+                currentSpriteIndex  = authoring.currentSpriteIndex,
+                canSpawnParticle    = authoring.canSpawnParticle,
+                particleToSpawn     = GetEntity(authoring.particle, TransformUsageFlags.Renderable)
             });
             AddComponentObject(entity, new TreasureChestSpriteData()
             {
