@@ -26,7 +26,7 @@ public class TreasureChestAuthoring : MonoBehaviour
                 isOpen              = authoring.isOpen,
                 currentSpriteIndex  = authoring.currentSpriteIndex,
                 canSpawnParticle    = authoring.canSpawnParticle,
-                particleToSpawn     = GetEntity(authoring.particle, TransformUsageFlags.Renderable)
+                particleToSpawn     = GetEntity(authoring.particle, TransformUsageFlags.Dynamic)
             });
             AddComponentObject(entity, new TreasureChestSpriteData()
             {

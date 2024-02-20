@@ -18,17 +18,18 @@ public partial struct TreasureChestParticleHandler : ISystem
 
         foreach(var (chestData, localTransform) in SystemAPI.Query<RefRW<TreasureChestData>, RefRO<LocalTransform>>())
         {
-            if (chestData.ValueRO.canSpawnParticle == false) return;
-
-            Entity newParticle = state.EntityManager.Instantiate(chestData.ValueRO.particleToSpawn);
-            LocalTransform newLocalTransform = new LocalTransform()
+            if (chestData.ValueRO.canSpawnParticle == true)
             {
-                Position    = localTransform.ValueRO.Position,
-                Rotation    = Quaternion.identity,
-                Scale       = 1f,
-            };
-            ecb.SetComponent<LocalTransform>(newParticle, newLocalTransform);
-            chestData.ValueRW.canSpawnParticle = false;
+                Entity newParticle = state.EntityManager.Instantiate(chestData.ValueRO.particleToSpawn);
+                LocalTransform newLocalTransform = new LocalTransform()
+                {
+                    Position    = localTransform.ValueRO.Position,
+                    Rotation    = Quaternion.identity,
+                    Scale       = 1f,
+                };
+                ecb.SetComponent<LocalTransform>(newParticle, newLocalTransform);
+                chestData.ValueRW.canSpawnParticle = false;
+            }
         }
 
         ecb.Playback(state.EntityManager);

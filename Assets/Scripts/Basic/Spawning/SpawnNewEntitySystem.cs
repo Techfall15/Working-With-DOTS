@@ -18,18 +18,18 @@ public partial struct SpawnNewEntitySystem : ISystem
             in SystemAPI.Query<RefRW<SpawnNewEntityData>, RefRO<InputData>>().WithEntityAccess())
         {
             bool isSpawnTriggered           = inputData.ValueRO.shoot;
-            Entity entityToSpawn            = spawnData.ValueRO.newEntityToSpawn;
+            
 
             spawnData.ValueRW.spawnPosition = state.EntityManager.GetComponentData<LocalTransform>(entity).Position;
             float3 spawnPos                 = spawnData.ValueRO.spawnPosition;
 
             if(isSpawnTriggered)
             {
-                Entity newEntity            = state.EntityManager.Instantiate(entityToSpawn);
+                Entity newEntity            = state.EntityManager.Instantiate(spawnData.ValueRO.newEntityToSpawn);
                 LocalTransform newTransform = new LocalTransform()
                 {
                     Position                = spawnPos,
-                    Rotation                = Quaternion.Euler(0f,0f,90f),
+                    Rotation                = Quaternion.identity,
                     Scale                   = 1.0f
                 };
                 state.EntityManager.SetComponentData<LocalTransform>(newEntity, newTransform);
