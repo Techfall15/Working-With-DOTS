@@ -9,6 +9,7 @@ public partial struct InteractEntityFollowingSystem : ISystem
     public void OnCreate(ref SystemState state)
     {
         state.RequireForUpdate<InteractEntityTagComponent>();
+        
     }
 
 

@@ -40,7 +40,10 @@ public class TreasureChestAuthoring : MonoBehaviour
             {
 
             });
+            AddComponent(entity, new InteractableTagComponent()
+            {
 
+            });
         }
 
     }

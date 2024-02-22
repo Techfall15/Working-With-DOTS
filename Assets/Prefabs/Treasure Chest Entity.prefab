@@ -103,7 +103,7 @@ MonoBehaviour:
   isOpen: 0
   canSpawnParticle: 0
   currentSpriteIndex: 0
-  particle: {fileID: 1384702896109751835, guid: a20ba8c3bb28c2d4e90628a36d65e6c0, type: 3}
+  particle: {fileID: 0}
   spriteList:
   - {fileID: -1842631384, guid: 4dadce8f14764a5448069a4c0e234cdb, type: 3}
   - {fileID: 899874523, guid: 4dadce8f14764a5448069a4c0e234cdb, type: 3}

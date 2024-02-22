@@ -29,7 +29,8 @@ public partial struct PlayerInteractEntitySpawnHandler : ISystem
         {
             Entity interactEntity = triggerEvent.EntityB;
             
-            triggerEntitySpawn[0] = (entityManager.HasComponent<TreasureChestData>(interactEntity) == true) ? 1 : 0;
+            // Only allow spawing if distance is half of the player size, or 0.5f.
+            triggerEntitySpawn[0] = (entityManager.HasComponent<InteractableTagComponent>(interactEntity) == true) ? 1 : 0;
         }
     }
 

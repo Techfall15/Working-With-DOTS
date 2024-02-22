@@ -18,14 +18,18 @@ public class TriggerComponentAuthoring : MonoBehaviour
             {
 
             });
+            AddComponent(entity, new InteractableTagComponent()
+            {
 
+            });
         }
 
 
 
     }
 
-
-
+}
+public partial struct InteractableTagComponent : IComponentData
+{
 
 }
