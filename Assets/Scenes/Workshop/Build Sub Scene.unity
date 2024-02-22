@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000004, guid: 4ac0e7eefb6415a4ca31c4bb659706f5, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -137,6 +137,8 @@ GameObject:
   - component: {fileID: 73897898}
   - component: {fileID: 73897895}
   - component: {fileID: 73897900}
+  - component: {fileID: 73897901}
+  - component: {fileID: 73897902}
   m_Layer: 0
   m_Name: Test Player
   m_TagString: Untagged
@@ -273,7 +275,7 @@ MonoBehaviour:
     m_Template: {fileID: 0}
     m_CollisionResponse:
       m_Override: 0
-      m_Value: 1
+      m_Value: 3
     m_Friction:
       m_Override: 0
       m_Value:
@@ -379,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccea9ea98e38942e0b0938c27ed1903e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MotionType: 1
+  m_MotionType: 0
   m_Smoothing: 0
   m_Mass: 1
   m_LinearDamping: 0.01
@@ -428,6 +430,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb12cdef37894b64aa30246ad518401e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &73897901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73897894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46089e859126cd6469e0e46bcdac9bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactEntity: {fileID: 5116597957446382826, guid: 770dd729614b81447bf570b344d45a6d, type: 3}
+--- !u!114 &73897902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73897894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5a45756b29ab84fa2977909729e92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &524471379
@@ -487,7 +514,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
---- !u!1001 &943507352
+--- !u!1001 &804157302
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -497,7 +524,68 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 735005366390710588, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
       propertyPath: m_Name
-      value: Treasure Chest Entity
+      value: Treasure Chest Entity (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988098414591897070, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: particle
+      value: 
+      objectReference: {fileID: 1384702896109751835, guid: ecdcb6caa2332e848ab23439448df211, type: 3}
+    - target: {fileID: 8743771961133527703, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743771961133527703, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743771961133527703, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743771961133527703, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743771961133527703, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743771961133527703, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743771961133527703, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743771961133527703, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743771961133527703, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743771961133527703, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+--- !u!1001 &1172655201
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 735005366390710588, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
+      propertyPath: m_Name
+      value: Treasure Chest Entity (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4988098414591897070, guid: 34fa8a8d1897cd248a5e298cffb6b265, type: 3}
       propertyPath: particle
@@ -553,5 +641,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 73897897}
-  - {fileID: 943507352}
   - {fileID: 524471379}
+  - {fileID: 804157302}
+  - {fileID: 1172655201}

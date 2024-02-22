@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\Circles\CircleRotationRowAuthoring.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSpeed.cs" />
     <Compile Include="Assets\Scripts\Basic\Destroying\TimeDelayDestroyData.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInteractEntitySpawnHandler.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationRowData.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationSystem.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSystem.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Assets\Scripts\Triangles\TriRotateSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\FillSystem.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamCounterAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInteractData.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Spawning\SpawnNewEntityAuthoring.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerShootAuthoring.cs" />
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntityAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Player\InteractEntityTagAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Spawning\SpawnNewEntitySystem.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamCounterData.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeed.cs" />
@@ -127,6 +130,7 @@
     <Compile Include="Assets\Scripts\InputData.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamSpawnerData.cs" />
     <Compile Include="Assets\Scripts\Basic\Destroying\TimeDelayDestroySystem.cs" />
+    <Compile Include="Assets\Scripts\Player\InteractEntityFollowingSystem.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSquareSystem.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarData.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreData.cs" />
@@ -139,6 +143,7 @@
     <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestParticleHandler.cs" />
     <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestAuthoring.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSpeed.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInteractAuthoring.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleSlidingSystem.cs" />
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeed.cs" />
