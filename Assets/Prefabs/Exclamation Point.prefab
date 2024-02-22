@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5071645814357260020}
   - component: {fileID: 2225093444965456480}
   - component: {fileID: -9010415859063363509}
+  - component: {fileID: 973007085037597165}
   m_Layer: 0
   m_Name: Exclamation Point
   m_TagString: Untagged
@@ -97,3 +98,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758737be330a2964e86b6b551d8debbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &973007085037597165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116597957446382826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918ed8c4873668a49ab3a90f0078a456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSpriteIndex: 0
+  spriteList:
+  - {fileID: 1155208749, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: 1107859842, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: 1178304087, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: 1495635092, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: 1447294265, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: 286675581, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: 1596656942, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: -613952502, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: -648826783, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: -1272503303, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: -888553794, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: -1593801877, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: 918126605, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: 832974689, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: 1949648526, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  - {fileID: 1049722588, guid: 08311aca776e8844b809432d0232f1c3, type: 3}
+  timeBetweenFrames: 0.05
+  maxTimeBetweenFrames: 0.05
