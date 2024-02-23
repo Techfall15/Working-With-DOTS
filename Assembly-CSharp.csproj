@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Basic\Destroying\TimeDelayDestroyAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreSystem.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShootSystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\Wooden Door\OpenWoodenDoorTagAuthoring.cs" />
     <Compile Include="Assets\Scripts\InputSystem.cs" />
     <Compile Include="Assets\Scripts\Basic\Movement\MoveWithKeyboardData.cs" />
     <Compile Include="Assets\Input\InputMap.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\Scripts\Circles\CircleRotationSystem.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Basic\Collision\TriggerComponentAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorSpriteData.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\FillData.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarSystem.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamSpawnerAuthoring.cs" />
@@ -107,8 +109,10 @@
     <Compile Include="Assets\Scripts\Beam\BeamCounterAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInteractData.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeedAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorOpenCloseSpawner.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Spawning\SpawnNewEntityAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorSpriteHandler.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamCounterController.cs" />
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntitySpeed.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSystem.cs" />
@@ -134,8 +138,11 @@
     <Compile Include="Assets\Scripts\InputData.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamSpawnerData.cs" />
     <Compile Include="Assets\Scripts\Basic\Destroying\TimeDelayDestroySystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorData.cs" />
     <Compile Include="Assets\Scripts\Player\InteractEntityFollowingSystem.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSquareSystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorDataAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\Wooden Door\OpenWoodenDoorTagComponent.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarData.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreData.cs" />
     <Compile Include="Assets\Scripts\Basic\Movement\MoveWithKeyboardAuthoring.cs" />
