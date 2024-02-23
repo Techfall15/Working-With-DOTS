@@ -71,6 +71,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GoThroughDoorAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4883006-e057-4891-9f9c-ae7c546d47ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""OpenChestAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5909c8d2-bc21-4365-9a39-87623983752b"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardInputs"",
+                    ""action"": ""GoThroughDoorAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -191,6 +211,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_KeyboardMap_ShootAction = m_KeyboardMap.FindAction("ShootAction", throwIfNotFound: true);
         m_KeyboardMap_SpawnMedalAction = m_KeyboardMap.FindAction("SpawnMedalAction", throwIfNotFound: true);
         m_KeyboardMap_OpenChestAction = m_KeyboardMap.FindAction("OpenChestAction", throwIfNotFound: true);
+        m_KeyboardMap_GoThroughDoorAction = m_KeyboardMap.FindAction("GoThroughDoorAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -257,6 +278,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardMap_ShootAction;
     private readonly InputAction m_KeyboardMap_SpawnMedalAction;
     private readonly InputAction m_KeyboardMap_OpenChestAction;
+    private readonly InputAction m_KeyboardMap_GoThroughDoorAction;
     public struct KeyboardMapActions
     {
         private @InputMap m_Wrapper;
@@ -266,6 +288,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @ShootAction => m_Wrapper.m_KeyboardMap_ShootAction;
         public InputAction @SpawnMedalAction => m_Wrapper.m_KeyboardMap_SpawnMedalAction;
         public InputAction @OpenChestAction => m_Wrapper.m_KeyboardMap_OpenChestAction;
+        public InputAction @GoThroughDoorAction => m_Wrapper.m_KeyboardMap_GoThroughDoorAction;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -290,6 +313,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @OpenChestAction.started += instance.OnOpenChestAction;
             @OpenChestAction.performed += instance.OnOpenChestAction;
             @OpenChestAction.canceled += instance.OnOpenChestAction;
+            @GoThroughDoorAction.started += instance.OnGoThroughDoorAction;
+            @GoThroughDoorAction.performed += instance.OnGoThroughDoorAction;
+            @GoThroughDoorAction.canceled += instance.OnGoThroughDoorAction;
         }
 
         private void UnregisterCallbacks(IKeyboardMapActions instance)
@@ -309,6 +335,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @OpenChestAction.started -= instance.OnOpenChestAction;
             @OpenChestAction.performed -= instance.OnOpenChestAction;
             @OpenChestAction.canceled -= instance.OnOpenChestAction;
+            @GoThroughDoorAction.started -= instance.OnGoThroughDoorAction;
+            @GoThroughDoorAction.performed -= instance.OnGoThroughDoorAction;
+            @GoThroughDoorAction.canceled -= instance.OnGoThroughDoorAction;
         }
 
         public void RemoveCallbacks(IKeyboardMapActions instance)
@@ -342,5 +371,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnShootAction(InputAction.CallbackContext context);
         void OnSpawnMedalAction(InputAction.CallbackContext context);
         void OnOpenChestAction(InputAction.CallbackContext context);
+        void OnGoThroughDoorAction(InputAction.CallbackContext context);
     }
 }

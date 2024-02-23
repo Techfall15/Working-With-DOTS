@@ -7,6 +7,8 @@ public class WoodenDoorDataAuthoring : MonoBehaviour
     public bool isOpen = false;
     public bool hasOpenDoorBeenSpawned = false;
     public GameObject openDoorEntity;
+    public GameObject openDoorEntityAudioSource;
+    public GameObject closeDoorEntityAudioSource;
     public Sprite[] spriteList;
     private class WoodenDoorDataBaker : Baker<WoodenDoorDataAuthoring>
     {
@@ -17,11 +19,14 @@ public class WoodenDoorDataAuthoring : MonoBehaviour
 
             AddComponent(entity, new WoodenDoorData()
             {
-                currentSpriteIndex = authoring.currentSpriteIndex,
-                isOpen = authoring.isOpen,
-                hasOpenDoorBeenSpawned = authoring.hasOpenDoorBeenSpawned,
-                openDoorEntity = GetEntity(authoring.openDoorEntity, TransformUsageFlags.Dynamic),
-            });
+                isOpen                      = authoring.isOpen,
+                currentSpriteIndex          = authoring.currentSpriteIndex,
+                hasOpenDoorBeenSpawned      = authoring.hasOpenDoorBeenSpawned,
+
+                openDoorEntity              = GetEntity(authoring.openDoorEntity, TransformUsageFlags.Dynamic),
+                openDoorEntityAudioSource   = GetEntity(authoring.openDoorEntityAudioSource, TransformUsageFlags.Dynamic),
+                closeDoorEntityAudioSource  = GetEntity(authoring.closeDoorEntityAudioSource, TransformUsageFlags.Dynamic)
+            }) ;
             AddComponentObject(entity, new WoodenDoorSpriteData()
             {
                 spriteList = authoring.spriteList,

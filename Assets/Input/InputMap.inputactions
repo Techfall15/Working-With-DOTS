@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GoThroughDoorAction",
+                    "type": "Button",
+                    "id": "b4883006-e057-4891-9f9c-ae7c546d47ef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -148,6 +157,17 @@
                     "processors": "",
                     "groups": "KeyboardInputs",
                     "action": "OpenChestAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5909c8d2-bc21-4365-9a39-87623983752b",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardInputs",
+                    "action": "GoThroughDoorAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
