@@ -29,22 +29,16 @@ public partial struct GoThroughDoorSystem : ISystem
 
             foreach(var woodenDoorData in SystemAPI.Query<RefRW<WoodenDoorData>>())
             {
+                if (woodenDoorData.ValueRO.isOpen == false) continue;
                 SetNewPlayerPositionJob newPlayerPosJob = new SetNewPlayerPositionJob()
                 {
                     ecb = ecb,
                     newPlayerPos = woodenDoorData.ValueRO.playerSpawnLocation,
                 };
-                if(woodenDoorData.ValueRO.isOpen == true)
-                {
-                    newPlayerPosJob.Schedule(state.Dependency).Complete();
-                    
-                    foreach(var(fadeBoxData, localTransform, entity) in SystemAPI.Query<RefRW<FadeBoxData>, RefRO<LocalTransform>>().WithEntityAccess())
-                    {
-                        if(fadeBoxData.ValueRO.fadeCount < 2) fadeBoxData.ValueRW.isFading = true;
-                        fadeBoxData.ValueRW.newPosition = woodenDoorData.ValueRO.cameraSpawnLocation;
-                    }
-                    
-                }
+                UpdateFadeBoxJob updateFadeBoxJob = new UpdateFadeBoxJob() { newSpawnLocation = woodenDoorData.ValueRO.cameraSpawnLocation };
+
+                newPlayerPosJob.Schedule(state.Dependency).Complete();
+                updateFadeBoxJob.Schedule(state.Dependency).Complete();
 
             }
             questionMarkJob.Schedule(state.Dependency).Complete();
@@ -99,7 +93,16 @@ public partial struct SetNewPlayerPositionJob : IJobEntity
         ecb.SetComponent<LocalTransform>(entity, newTransform);
     }
 }
-
+[BurstCompile]
+public partial struct UpdateFadeBoxJob : IJobEntity
+{
+    public float3 newSpawnLocation;
+    public void Execute(ref FadeBoxData fadeBoxData, in LocalTransform fadeBoxTransform)
+    {
+        if (fadeBoxData.fadeCount < 2) fadeBoxData.isFading = true;
+        fadeBoxData.newPosition = newSpawnLocation;
+    }
+}
 
 
 
