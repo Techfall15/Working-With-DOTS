@@ -8,4 +8,5 @@ public struct InputData : IComponentData
     public bool shoot;
     public bool spawnMedal;
     public bool openChest;
+    public bool goThoughDoor;
 }

@@ -1,11 +1,15 @@
 using UnityEngine;
 using Unity.Entities;
+using Unity.Mathematics;
 
 public class WoodenDoorDataAuthoring : MonoBehaviour
 {
     public int currentSpriteIndex = 0;
     public bool isOpen = false;
     public bool hasOpenDoorBeenSpawned = false;
+    public bool wasEnteredLast = false;
+    public float3 cameraSpawnLocation;
+    public float3 playerSpawnLocation;
     public GameObject openDoorEntity;
     public GameObject openDoorEntityAudioSource;
     public GameObject closeDoorEntityAudioSource;
@@ -22,6 +26,9 @@ public class WoodenDoorDataAuthoring : MonoBehaviour
                 isOpen                      = authoring.isOpen,
                 currentSpriteIndex          = authoring.currentSpriteIndex,
                 hasOpenDoorBeenSpawned      = authoring.hasOpenDoorBeenSpawned,
+                wasEnteredLast              = authoring.wasEnteredLast,
+                cameraSpawnLocation         = authoring.cameraSpawnLocation,
+                playerSpawnLocation         = authoring.playerSpawnLocation,
 
                 openDoorEntity              = GetEntity(authoring.openDoorEntity, TransformUsageFlags.Dynamic),
                 openDoorEntityAudioSource   = GetEntity(authoring.openDoorEntityAudioSource, TransformUsageFlags.Dynamic),

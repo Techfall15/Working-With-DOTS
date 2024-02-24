@@ -309,6 +309,14 @@ MonoBehaviour:
   currentSpriteIndex: 0
   isOpen: 0
   hasOpenDoorBeenSpawned: 0
+  cameraSpawnLocation:
+    x: 0
+    y: 10
+    z: -10
+  playerSpawnLocation:
+    x: 0
+    y: 9.5
+    z: 0
   openDoorEntity: {fileID: 4404545365817392637, guid: 2c202e0c4a5b3bd4e81fecd9b8ecc9ab, type: 3}
   openDoorEntityAudioSource: {fileID: 8253916395863021177, guid: edf9043dd597da0488575b9315910d9d, type: 3}
   closeDoorEntityAudioSource: {fileID: 750350265768427433, guid: df665ed2172ce394596dae462c1e5848, type: 3}
