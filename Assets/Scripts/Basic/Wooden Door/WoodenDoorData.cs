@@ -7,6 +7,7 @@ public partial struct WoodenDoorData : IComponentData
     public int currentSpriteIndex;
     public bool isOpen;
     public bool hasOpenDoorBeenSpawned;
+    public bool hasAudioBeenSpawned;
     public bool wasEnteredLast;
     public Entity openDoorEntity;
     public Entity openDoorEntityAudioSource;

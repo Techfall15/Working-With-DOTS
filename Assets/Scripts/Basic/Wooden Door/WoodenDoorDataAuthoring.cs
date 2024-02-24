@@ -7,6 +7,7 @@ public class WoodenDoorDataAuthoring : MonoBehaviour
     public int currentSpriteIndex = 0;
     public bool isOpen = false;
     public bool hasOpenDoorBeenSpawned = false;
+    public bool hasAudioBeenSpawned = false;
     public bool wasEnteredLast = false;
     public float3 cameraSpawnLocation;
     public float3 playerSpawnLocation;
@@ -26,6 +27,7 @@ public class WoodenDoorDataAuthoring : MonoBehaviour
                 isOpen                      = authoring.isOpen,
                 currentSpriteIndex          = authoring.currentSpriteIndex,
                 hasOpenDoorBeenSpawned      = authoring.hasOpenDoorBeenSpawned,
+                hasAudioBeenSpawned         = authoring.hasAudioBeenSpawned,
                 wasEnteredLast              = authoring.wasEnteredLast,
                 cameraSpawnLocation         = authoring.cameraSpawnLocation,
                 playerSpawnLocation         = authoring.playerSpawnLocation,

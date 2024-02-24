@@ -9,6 +9,7 @@ using Unity.Jobs;
 using Unity.Burst;
 
 
+
 [UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateAfter(typeof(PhysicsInitializeGroup))]
 [UpdateAfter(typeof(PhysicsSimulationGroup))]
@@ -22,46 +23,45 @@ public partial struct WoodenDoorOpenCloseSpawner : ISystem
     [BurstCompile]
     public partial struct DoorTriggerEvents : ITriggerEventsJob
     {
-        public EntityManager entityManager;
-        public NativeArray<int> openState;
-        public NativeArray<Entity> triggered;
+        public EntityManager        entityManager;
+        public NativeArray<int>     openState;
+        public NativeArray<Entity>  triggered;
         public void Execute(TriggerEvent triggerEvent)
         {
             Entity door         = triggerEvent.EntityA;
             Entity player       = triggerEvent.EntityB;
 
-            openState[0] = (entityManager.HasComponent<PlayerTagComponent>(player)) ? 1 : 0;
-            triggered[0] = door;
-            
+            openState[0]        = (entityManager.HasComponent<PlayerTagComponent>(player)) ? 1 : 0;
+            triggered[0]        = door;
             
         }
     }
 
     public void OnUpdate(ref SystemState state)
     {
-        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
-        NativeArray<int> openState = new NativeArray<int>(1, Allocator.TempJob);
-        NativeArray<Entity> triggered = new NativeArray<Entity>(1, Allocator.TempJob);
-        DoorTriggerEvents doorTriggerEvents = new DoorTriggerEvents()
+        EntityCommandBuffer     ecb                 = new EntityCommandBuffer(Allocator.TempJob);
+        NativeArray<int>        openState           = new NativeArray<int>(1, Allocator.TempJob);
+        NativeArray<Entity>     triggered           = new NativeArray<Entity>(1, Allocator.TempJob);
+        DoorTriggerEvents       doorTriggerEvents   = new DoorTriggerEvents()
         {
-            entityManager = state.EntityManager,
-            openState = openState,
-            triggered = triggered
+            entityManager   = state.EntityManager,
+            openState       = openState,
+            triggered       = triggered
         };
+        DestroyOpenDoorEntityJob    destroyOpenDoorEntityJob        = new DestroyOpenDoorEntityJob() { ecb = ecb };
+        ResetWoodenDoorsJob         resetDoorsJob                   = new ResetWoodenDoorsJob()      { ecb = ecb };
+        CheckPlayerCollisionJob     checkPlayerCollisionJob         = new CheckPlayerCollisionJob()  { triggeredEntities = triggered };
 
         doorTriggerEvents.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), state.Dependency).Complete();
 
-        
-        
         // If the player is over a door.
         if (openState[0] == 1)
         {
+            // If the door is colliding with the player, then set 'isOpen' to 'true'
+            checkPlayerCollisionJob.Schedule(state.Dependency).Complete();
             // For each door entity
             foreach(var(woodenDoorData, doorLocalTransform, entity) in SystemAPI.Query<RefRW<WoodenDoorData>, RefRO<LocalTransform>>().WithEntityAccess())
             {
-                // If the door is colliding with the player, then set 'isOpen' to 'true'
-                woodenDoorData.ValueRW.isOpen = (entity == triggered[0]) ? true : false;
-
                 // If the door is colliding with the player AND hasn't already spawned the open door entity
                 if(woodenDoorData.ValueRO.isOpen == true && woodenDoorData.ValueRO.hasOpenDoorBeenSpawned == false)
                 {
@@ -86,23 +86,8 @@ public partial struct WoodenDoorOpenCloseSpawner : ISystem
         // If the player is not over a door.
         else
         {
-            // For each open door entity that was spawned
-            foreach(var(openWoodenDoorTag, entity) in SystemAPI.Query<RefRO<OpenWoodenDoorTagComponent>>().WithEntityAccess())
-            {
-                // Destroy it
-                ecb.DestroyEntity(entity);
-            }
-            // For each door entity
-            foreach (var woodenDoorData in SystemAPI.Query<RefRW<WoodenDoorData>>())
-            {
-                // Check if the door was closed already, if so then continue to next loop
-                if (woodenDoorData.ValueRO.isOpen == false) continue;
-                // If the door was open, then close it and reset values
-                woodenDoorData.ValueRW.isOpen = false;
-                woodenDoorData.ValueRW.hasOpenDoorBeenSpawned = false;
-                // Finally, play the closing sound
-                ecb.Instantiate(woodenDoorData.ValueRO.closeDoorEntityAudioSource);
-            }
+            destroyOpenDoorEntityJob.Schedule(state.Dependency).Complete();
+            resetDoorsJob.Schedule(state.Dependency).Complete();
         }
 
         ecb.Playback(state.EntityManager);
@@ -111,4 +96,33 @@ public partial struct WoodenDoorOpenCloseSpawner : ISystem
     }
 
 
+}
+[BurstCompile]
+public partial struct DestroyOpenDoorEntityJob : IJobEntity
+{
+    public EntityCommandBuffer ecb;
+    public void Execute(OpenWoodenDoorTagComponent openDoor, Entity entity) => ecb.DestroyEntity(entity);
+}
+[BurstCompile]
+public partial struct ResetWoodenDoorsJob : IJobEntity
+{
+    public EntityCommandBuffer ecb;
+    public void Execute(ref WoodenDoorData doorData)
+    {
+        if(doorData.isOpen == true)
+        {
+            doorData.isOpen = false;
+            doorData.hasOpenDoorBeenSpawned = false;
+            ecb.Instantiate(doorData.closeDoorEntityAudioSource);
+        }
+    }
+}
+[BurstCompile]
+public partial struct CheckPlayerCollisionJob : IJobEntity
+{
+    public NativeArray<Entity> triggeredEntities;
+    public void Execute(ref WoodenDoorData doorData, Entity entity)
+    {
+        doorData.isOpen = ((entity == triggeredEntities[0]) == true) ? true : false;
+    }
 }
