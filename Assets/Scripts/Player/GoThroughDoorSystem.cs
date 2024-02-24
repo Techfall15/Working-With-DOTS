@@ -3,6 +3,7 @@ using Unity.Entities;
 using Unity.Transforms;
 using Unity.Mathematics;
 using Unity.Collections;
+using Unity.Burst;
 
 
 public partial struct GoThroughDoorSystem : ISystem
@@ -16,8 +17,10 @@ public partial struct GoThroughDoorSystem : ISystem
 
     public void OnUpdate(ref SystemState state)
     {
+        EntityCommandBuffer ecb                 = new EntityCommandBuffer(Allocator.TempJob);
+        SpawnQuestionMarkJob questionMarkJob    = new SpawnQuestionMarkJob() { ecb = ecb };
 
-        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
+
         // For each source of input information
         foreach(var inputData in SystemAPI.Query<RefRO<InputData>>())
         {
@@ -49,21 +52,8 @@ public partial struct GoThroughDoorSystem : ISystem
                 }
 
             }
-            foreach (var (testNPCData, npcTransform) in SystemAPI.Query<RefRW<TestNPCData>, RefRO<LocalTransform>>())
-            {
-                if (testNPCData.ValueRO.canSpawnQuestionMark == true && testNPCData.ValueRO.alreadySpawnedQuestionMark == false)
-                {
-                    Entity questionMark = ecb.Instantiate(testNPCData.ValueRO.questionMarkEntity);
-                    LocalTransform questionMarkTransform = new LocalTransform()
-                    {
-                        Position = new float3(npcTransform.ValueRO.Position.x, npcTransform.ValueRO.Position.y + 1.25f, npcTransform.ValueRO.Position.z),
-                        Rotation = Quaternion.identity,
-                        Scale = 1f
-                    };
-                    testNPCData.ValueRW.alreadySpawnedQuestionMark = true;
-                    ecb.SetComponent<LocalTransform>(questionMark, questionMarkTransform);
-                }
-            }
+            questionMarkJob.Schedule(state.Dependency).Complete();
+            
         }
 
 
@@ -73,3 +63,30 @@ public partial struct GoThroughDoorSystem : ISystem
     }
 
 }
+#region IJobEntity Section
+[BurstCompile]
+public partial struct SpawnQuestionMarkJob : IJobEntity
+{
+    public EntityCommandBuffer ecb;
+    public void Execute(ref TestNPCData npcData, in LocalTransform npcTransform)
+    {
+
+        if(npcData.canSpawnQuestionMark == true && npcData.alreadySpawnedQuestionMark == false)
+        {
+            Entity questionMark = ecb.Instantiate(npcData.questionMarkEntity);
+            LocalTransform questionMarkTransform = new LocalTransform()
+            {
+                Position = new float3(npcTransform.Position.x, npcTransform.Position.y + 1.25f, npcTransform.Position.z),
+                Rotation = Quaternion.identity,
+                Scale = 1f
+            };
+            npcData.alreadySpawnedQuestionMark = true;
+            ecb.SetComponent<LocalTransform>(questionMark, questionMarkTransform);
+        }
+    }
+}
+
+
+
+
+#endregion
