@@ -173,6 +173,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntityMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\TestNPCQuestionMarkHandler.cs" />
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Spawning\SpawnOnMouseClickAuthoring.cs" />

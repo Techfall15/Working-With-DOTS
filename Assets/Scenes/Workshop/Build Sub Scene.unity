@@ -309,6 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 798339853}
   - component: {fileID: 798339852}
+  - component: {fileID: 798339854}
   m_Layer: 0
   m_Name: Test NPC
   m_TagString: Untagged
@@ -383,6 +384,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &798339854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798339851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d55e0867dbb23438078fce9c3bdefe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canSpawnQuestionMark: 0
+  alreadySpawnedQuestionMark: 0
+  questionMarkEntity: {fileID: 5116597957446382826, guid: c108ed3591ece684386af2fe36dc3979, type: 3}
 --- !u!1001 &2129346537
 PrefabInstance:
   m_ObjectHideFlags: 0

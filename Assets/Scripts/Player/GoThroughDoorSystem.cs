@@ -31,7 +31,6 @@ public partial struct GoThroughDoorSystem : ISystem
                     foreach(var(localTransform, entity) in SystemAPI.Query<RefRW<LocalTransform>>().WithEntityAccess().WithAll<PlayerTagComponent>())
                     {
                         float3 newPlayerPosition        = woodenDoorData.ValueRO.playerSpawnLocation;
-                        // Camera.main.transform.position  = woodenDoorData.ValueRO.cameraSpawnLocation;
                         LocalTransform newTransform = new LocalTransform()
                         {
                             Position = newPlayerPosition,
@@ -48,10 +47,23 @@ public partial struct GoThroughDoorSystem : ISystem
                     }
                     
                 }
-                
 
             }
-
+            foreach (var (testNPCData, npcTransform) in SystemAPI.Query<RefRW<TestNPCData>, RefRO<LocalTransform>>())
+            {
+                if (testNPCData.ValueRO.canSpawnQuestionMark == true && testNPCData.ValueRO.alreadySpawnedQuestionMark == false)
+                {
+                    Entity questionMark = ecb.Instantiate(testNPCData.ValueRO.questionMarkEntity);
+                    LocalTransform questionMarkTransform = new LocalTransform()
+                    {
+                        Position = new float3(npcTransform.ValueRO.Position.x, npcTransform.ValueRO.Position.y + 1.25f, npcTransform.ValueRO.Position.z),
+                        Rotation = Quaternion.identity,
+                        Scale = 1f
+                    };
+                    testNPCData.ValueRW.alreadySpawnedQuestionMark = true;
+                    ecb.SetComponent<LocalTransform>(questionMark, questionMarkTransform);
+                }
+            }
         }
 
 

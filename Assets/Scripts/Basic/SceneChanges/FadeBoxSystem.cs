@@ -56,6 +56,7 @@ public partial struct FadeBoxSystem : ISystem
                     fadeBoxData.ValueRW.isFadingOut = false;
                     fadeBoxData.ValueRW.fadeCount++;
                 }
+                
             }
             if(fadeBoxData.ValueRO.isFading == true && fadeBoxData.ValueRO.isFadingOut == false)
             {

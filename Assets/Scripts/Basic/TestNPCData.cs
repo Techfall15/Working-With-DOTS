@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TestNPCData : MonoBehaviour
+using Unity.Entities;
+public partial struct TestNPCData : IComponentData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    public bool canSpawnQuestionMark;
+    public bool alreadySpawnedQuestionMark;
+    public Entity questionMarkEntity;
+
+
 }
