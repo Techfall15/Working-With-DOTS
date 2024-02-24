@@ -9,7 +9,6 @@ using Unity.Jobs;
 using Unity.Burst;
 
 
-
 [UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateAfter(typeof(PhysicsInitializeGroup))]
 [UpdateAfter(typeof(PhysicsSimulationGroup))]
@@ -51,43 +50,22 @@ public partial struct WoodenDoorOpenCloseSpawner : ISystem
         DestroyOpenDoorEntityJob    destroyOpenDoorEntityJob        = new DestroyOpenDoorEntityJob() { ecb = ecb };
         ResetWoodenDoorsJob         resetDoorsJob                   = new ResetWoodenDoorsJob()      { ecb = ecb };
         CheckPlayerCollisionJob     checkPlayerCollisionJob         = new CheckPlayerCollisionJob()  { triggeredEntities = triggered };
+        OpenDoorEntitySpawnJob      openDoorEntitySpawnJob          = new OpenDoorEntitySpawnJob()   { ecb = ecb };
 
         doorTriggerEvents.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), state.Dependency).Complete();
 
         // If the player is over a door.
         if (openState[0] == 1)
         {
-            // If the door is colliding with the player, then set 'isOpen' to 'true'
-            checkPlayerCollisionJob.Schedule(state.Dependency).Complete();
-            // For each door entity
-            foreach(var(woodenDoorData, doorLocalTransform, entity) in SystemAPI.Query<RefRW<WoodenDoorData>, RefRO<LocalTransform>>().WithEntityAccess())
-            {
-                // If the door is colliding with the player AND hasn't already spawned the open door entity
-                if(woodenDoorData.ValueRO.isOpen == true && woodenDoorData.ValueRO.hasOpenDoorBeenSpawned == false)
-                {
-                    // Spawn open door entity and set transform next to the door
-                    Entity newOpenDoorEntity = ecb.Instantiate(woodenDoorData.ValueRO.openDoorEntity);
-                    float3 doorPos = doorLocalTransform.ValueRO.Position;
-
-                    LocalTransform openDoorTransform = new LocalTransform()
-                    {
-                        Position = new float3(doorPos.x - 0.9f, doorPos.y, doorPos.z),
-                        Rotation = Quaternion.identity,
-                        Scale = 1f
-                    };
-                    // Change 'hasOpenDoorBeenSpawned' to true, so only 1 gets spawned
-                    woodenDoorData.ValueRW.hasOpenDoorBeenSpawned = true;
-                    ecb.Instantiate(woodenDoorData.ValueRO.openDoorEntityAudioSource);
-                    // Set the spawn position of the open door entity
-                    ecb.SetComponent<LocalTransform>(newOpenDoorEntity, openDoorTransform);
-                }
-            }
+            
+            checkPlayerCollisionJob.Schedule(state.Dependency).Complete();      // If the door is colliding with the player, then set 'isOpen' to 'true'
+            openDoorEntitySpawnJob.Schedule(state.Dependency).Complete();       // If the door is open then spawn a single new open door enity
         }
-        // If the player is not over a door.
+        // If the player is NOT over a door.
         else
         {
-            destroyOpenDoorEntityJob.Schedule(state.Dependency).Complete();
-            resetDoorsJob.Schedule(state.Dependency).Complete();
+            destroyOpenDoorEntityJob.Schedule(state.Dependency).Complete();     // Destroy any open door entities that were spawned
+            resetDoorsJob.Schedule(state.Dependency).Complete();                // Reset the values of any doors the player triggered
         }
 
         ecb.Playback(state.EntityManager);
@@ -97,6 +75,8 @@ public partial struct WoodenDoorOpenCloseSpawner : ISystem
 
 
 }
+
+#region IJobEntity Section
 [BurstCompile]
 public partial struct DestroyOpenDoorEntityJob : IJobEntity
 {
@@ -126,3 +106,31 @@ public partial struct CheckPlayerCollisionJob : IJobEntity
         doorData.isOpen = ((entity == triggeredEntities[0]) == true) ? true : false;
     }
 }
+[BurstCompile]
+public partial struct OpenDoorEntitySpawnJob : IJobEntity
+{
+    public EntityCommandBuffer ecb;
+    public void Execute(ref WoodenDoorData doorData, in LocalTransform localTransform, Entity entity)
+    {
+        if(doorData.isOpen == true && doorData.hasOpenDoorBeenSpawned == false)
+        {
+            // Spawn open door entity and set transform next to the door
+            Entity newOpenDoorEntity            = ecb.Instantiate(doorData.openDoorEntity);
+            float3 doorPos                      = localTransform.Position;
+
+            LocalTransform openDoorTransform    = new LocalTransform()
+            {
+                Position = new float3(doorPos.x - 0.9f, doorPos.y, doorPos.z),
+                Rotation = Quaternion.identity,
+                Scale = 1f
+            };
+            // Change 'hasOpenDoorBeenSpawned' to true, so only 1 gets spawned
+            doorData.hasOpenDoorBeenSpawned = true;
+            ecb.Instantiate(doorData.openDoorEntityAudioSource);
+            // Set the spawn position of the open door entity
+            ecb.SetComponent<LocalTransform>(newOpenDoorEntity, openDoorTransform);
+        }
+    }
+}
+
+#endregion
