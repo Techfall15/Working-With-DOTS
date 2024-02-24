@@ -7,7 +7,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using Unity.Jobs;
 using Unity.Burst;
-using JetBrains.Annotations;
+
 
 [UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateAfter(typeof(PhysicsInitializeGroup))]
@@ -27,11 +27,12 @@ public partial struct WoodenDoorOpenCloseSpawner : ISystem
         public NativeArray<Entity> triggered;
         public void Execute(TriggerEvent triggerEvent)
         {
-            Entity door         = triggerEvent.EntityB;
-            Entity player       = triggerEvent.EntityA;
+            Entity door         = triggerEvent.EntityA;
+            Entity player       = triggerEvent.EntityB;
 
             openState[0] = (entityManager.HasComponent<PlayerTagComponent>(player)) ? 1 : 0;
             triggered[0] = door;
+            
             
         }
     }

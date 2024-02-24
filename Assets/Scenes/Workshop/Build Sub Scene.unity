@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1689202089297485086, guid: d5ffa306d69327a468eb3a682a5b660b, type: 3}
       propertyPath: playerSpawnLocation.y
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8304119201487039509, guid: d5ffa306d69327a468eb3a682a5b660b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -407,6 +407,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1689202089297485086, guid: d5ffa306d69327a468eb3a682a5b660b, type: 3}
+      propertyPath: playerSpawnLocation.y
+      value: 9.75
+      objectReference: {fileID: 0}
     - target: {fileID: 8304119201487039509, guid: d5ffa306d69327a468eb3a682a5b660b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
