@@ -29,20 +29,15 @@ public partial struct GoThroughDoorSystem : ISystem
 
             foreach(var woodenDoorData in SystemAPI.Query<RefRW<WoodenDoorData>>())
             {
+                SetNewPlayerPositionJob newPlayerPosJob = new SetNewPlayerPositionJob()
+                {
+                    ecb = ecb,
+                    newPlayerPos = woodenDoorData.ValueRO.playerSpawnLocation,
+                };
                 if(woodenDoorData.ValueRO.isOpen == true)
                 {
-                    foreach(var(localTransform, entity) in SystemAPI.Query<RefRW<LocalTransform>>().WithEntityAccess().WithAll<PlayerTagComponent>())
-                    {
-                        float3 newPlayerPosition        = woodenDoorData.ValueRO.playerSpawnLocation;
-                        LocalTransform newTransform = new LocalTransform()
-                        {
-                            Position = newPlayerPosition,
-                            Rotation = Quaternion.identity,
-                            Scale = 1f
-                        };
-                        
-                        ecb.SetComponent<LocalTransform>(entity, newTransform);
-                    }
+                    newPlayerPosJob.Schedule(state.Dependency).Complete();
+                    
                     foreach(var(fadeBoxData, localTransform, entity) in SystemAPI.Query<RefRW<FadeBoxData>, RefRO<LocalTransform>>().WithEntityAccess())
                     {
                         if(fadeBoxData.ValueRO.fadeCount < 2) fadeBoxData.ValueRW.isFading = true;
@@ -68,6 +63,7 @@ public partial struct GoThroughDoorSystem : ISystem
 public partial struct SpawnQuestionMarkJob : IJobEntity
 {
     public EntityCommandBuffer ecb;
+
     public void Execute(ref TestNPCData npcData, in LocalTransform npcTransform)
     {
 
@@ -83,6 +79,24 @@ public partial struct SpawnQuestionMarkJob : IJobEntity
             npcData.alreadySpawnedQuestionMark = true;
             ecb.SetComponent<LocalTransform>(questionMark, questionMarkTransform);
         }
+    }
+}
+[BurstCompile]
+public partial struct SetNewPlayerPositionJob : IJobEntity
+{
+    public EntityCommandBuffer ecb;
+    public float3 newPlayerPos;
+    public void Execute(in PlayerTagComponent playerTag, ref LocalTransform playerTransform, Entity entity)
+    {
+        float3          newPlayerPosition   = newPlayerPos;
+        LocalTransform  newTransform        = new LocalTransform()
+        {
+            Position    = newPlayerPosition,
+            Rotation    = Quaternion.identity,
+            Scale       = 1f
+        };
+
+        ecb.SetComponent<LocalTransform>(entity, newTransform);
     }
 }
 
