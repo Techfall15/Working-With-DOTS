@@ -47,16 +47,14 @@ public partial struct WoodenDoorOpenCloseSpawner : ISystem
             openState       = openState,
             triggered       = triggered
         };
-        DestroyOpenDoorEntityJob    destroyOpenDoorEntityJob        = new DestroyOpenDoorEntityJob() { ecb = ecb };
-        ResetWoodenDoorsJob         resetDoorsJob                   = new ResetWoodenDoorsJob()      { ecb = ecb };
-        CheckPlayerCollisionJob     checkPlayerCollisionJob         = new CheckPlayerCollisionJob()  { triggeredEntities = triggered };
-        OpenDoorEntitySpawnJob      openDoorEntitySpawnJob          = new OpenDoorEntitySpawnJob()   { ecb = ecb };
 
         doorTriggerEvents.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), state.Dependency).Complete();
 
         // If the player is over a door.
         if (openState[0] == 1)
         {
+            CheckPlayerCollisionJob     checkPlayerCollisionJob         = new CheckPlayerCollisionJob()  { triggeredEntities = triggered };
+            OpenDoorEntitySpawnJob      openDoorEntitySpawnJob          = new OpenDoorEntitySpawnJob()   { ecb = ecb };
             
             checkPlayerCollisionJob.Schedule(state.Dependency).Complete();      // If the door is colliding with the player, then set 'isOpen' to 'true'
             openDoorEntitySpawnJob.Schedule(state.Dependency).Complete();       // If the door is open then spawn a single new open door enity
@@ -64,6 +62,9 @@ public partial struct WoodenDoorOpenCloseSpawner : ISystem
         // If the player is NOT over a door.
         else
         {
+            DestroyOpenDoorEntityJob    destroyOpenDoorEntityJob        = new DestroyOpenDoorEntityJob() { ecb = ecb };
+            ResetWoodenDoorsJob         resetDoorsJob                   = new ResetWoodenDoorsJob()      { ecb = ecb };
+
             destroyOpenDoorEntityJob.Schedule(state.Dependency).Complete();     // Destroy any open door entities that were spawned
             resetDoorsJob.Schedule(state.Dependency).Complete();                // Reset the values of any doors the player triggered
         }
