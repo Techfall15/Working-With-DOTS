@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{82ED1A9D-50BE-00BE-DFB6-76285EF0B33B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Scripts\Basic\Destroying\OffScreenDestroySystem.cs" />
     <Compile Include="Assets\Scripts\Basic\Destroying\TimeDelayDestroyAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreSystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\SceneChanges\FadeBoxAspect.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShootSystem.cs" />
     <Compile Include="Assets\Scripts\Player\GoThroughDoorSystem.cs" />
     <Compile Include="Assets\Scripts\Basic\Wooden Door\OpenWoodenDoorTagAuthoring.cs" />
@@ -179,6 +181,7 @@
     <Compile Include="Assets\Scripts\Beam\BeamAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Spawning\SpawnOnMouseClickAuthoring.cs" />
     <Compile Include="Assets\Scripts\Medals\MedalCollisionEventSystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\TestNPCAspect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

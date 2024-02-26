@@ -18,10 +18,10 @@ public partial struct FadeBoxSystem : ISystem
     {
         EntityCommandBuffer ecb = new EntityCommandBuffer(Unity.Collections.Allocator.TempJob);
         // For each fade box
-        foreach (var (fadeBoxData, localTransform, entity) in SystemAPI.Query<RefRW<FadeBoxData>, RefRW<LocalTransform>>().WithEntityAccess())
+        foreach ((FadeBoxAspect fadeBoxAspect, Entity entity) in SystemAPI.Query<FadeBoxAspect>().WithEntityAccess())
         {
-            SpriteRenderer  renderer        = state.EntityManager.GetComponentObject<SpriteRenderer>(entity);
             float           deltaTime       = SystemAPI.Time.DeltaTime;
+            SpriteRenderer  renderer        = state.EntityManager.GetComponentObject<SpriteRenderer>(entity);
             Color           myCurrentColor  = renderer.color;
 
             FadeInJob       fadeInJob       = new FadeInJob()
@@ -35,113 +35,66 @@ public partial struct FadeBoxSystem : ISystem
                 myCurrentColor  = myCurrentColor,
             };
 
-            if (fadeBoxData.ValueRO.fadeCount > 1)
+            switch(fadeBoxAspect.fadeBoxData.ValueRO.fadeCount)
             {
-                ResetFadeValuesJob resetFadeValueJob = new ResetFadeValuesJob() { };
-                resetFadeValueJob.Schedule(state.Dependency).Complete();
-            }
-            if(fadeBoxData.ValueRO.fadeCount == 1)
-            {
-                MoveFadeBox moveFadeBoxJob = new MoveFadeBox()
-                {
-                    ecb             = ecb,
-                    entityManager   = state.EntityManager,
-                };
-                moveFadeBoxJob.Schedule(state.Dependency).Complete();
-                Camera.main.transform.position = new float3(fadeBoxData.ValueRO.newPosition.x, fadeBoxData.ValueRO.newPosition.y, -10f);
-            }
-            fadeOutJob.Schedule(state.Dependency).Complete();
-            fadeInJob.Schedule(state.Dependency).Complete();
+                // If the fade box has NOT started fading yet, then fade in
+                case 0:
+                    fadeInJob.Schedule(state.Dependency).Complete();
+                    break;
 
-            renderer.color = fadeBoxData.ValueRO.newColor;
+                // If the fade box has reached max alpha (completely black), move the fade box & camera if necessary, then fade out
+                case 1:
+                    UpdateFadeBoxPositionJob updateFadeBoxPositionJob = new UpdateFadeBoxPositionJob() { ecb = ecb };
+                    updateFadeBoxPositionJob.Schedule(state.Dependency).Complete();
+                    Vector3 camPos          = Camera.main.transform.position;
+                    float3 newFadeBoxPos    = fadeBoxAspect.fadeBoxData.ValueRO.newPosition;
+
+                    if(camPos.x != newFadeBoxPos.x || camPos.y != newFadeBoxPos.y)
+                    {
+                        Camera.main.transform.position = new float3(newFadeBoxPos.x, newFadeBoxPos.y, -10f);
+                    }
+
+                    fadeOutJob.Schedule(state.Dependency).Complete();
+                    break;
+
+                // Reset the fade box back to default values
+                case 2:
+                    ResetFadeBoxValuesJob resetFadeBoxValueJob = new ResetFadeBoxValuesJob() { };
+                    resetFadeBoxValueJob.Schedule(state.Dependency).Complete();
+                    break;
+
+                default:
+                    Debug.Log("Error with FadeBox count.");
+                    break;
+            }
+
+            renderer.color = fadeBoxAspect.fadeBoxData.ValueRO.newColor;
         }
         ecb.Playback(state.EntityManager);
-
     }
-
-
 }
 [BurstCompile]
 public partial struct FadeInJob : IJobEntity
 {
     public float deltaTime;
     public Color myCurrentColor;
-    public void Execute(ref FadeBoxData fadeBoxData, Entity entity)
-    {
-        if (fadeBoxData.isFading == true && fadeBoxData.isFadingOut == false)
-        {
-            Color currentColor = myCurrentColor;
-            float newAlpha = ((currentColor.a + deltaTime) < 1f) ? (currentColor.a + deltaTime) : 1f;
-            Color newColor = new Color()
-            {
-                r = currentColor.r,
-                g = currentColor.g,
-                b = currentColor.b,
-                a = newAlpha
-            };
-            fadeBoxData.newColor = newColor;
-            if (newAlpha >= 1f)
-            {
-                fadeBoxData.isFadingOut = true;
-                fadeBoxData.fadeCount++;
-            }
-        }
-    }
+    public void Execute(FadeBoxAspect fadeBoxAspect) => fadeBoxAspect.ReduceFadeBoxAlphaBy(deltaTime, myCurrentColor);
 }
 [BurstCompile]
 public partial struct FadeOutJob : IJobEntity
 {
     public float deltaTime;
     public Color myCurrentColor;
-    public void Execute(ref FadeBoxData fadeBoxData, Entity entity)
-    {
-        // If fading is enabled...
-        if (fadeBoxData.isFading == true && fadeBoxData.isFadingOut == true)
-        {
-            Color currentColor = myCurrentColor;
-            float newAlpha = ((currentColor.a - deltaTime) > 0) ? (currentColor.a - deltaTime) : 0;
-            Color newColor = new Color()
-            {
-                r = currentColor.r,
-                g = currentColor.g,
-                b = currentColor.b,
-                a = newAlpha
-            };
-            fadeBoxData.newColor = newColor;
-            if (newAlpha <= 0f)
-            {
-                fadeBoxData.isFadingOut = false;
-                fadeBoxData.fadeCount++;
-            }
-
-        }
-    }
+    public void Execute(FadeBoxAspect fadeBoxAspect) => fadeBoxAspect.IncreaseFadeBoxAlphaBy(deltaTime, myCurrentColor);
 }
 [BurstCompile]
-public partial struct ResetFadeValuesJob : IJobEntity
+public partial struct ResetFadeBoxValuesJob : IJobEntity
 {
-    public void Execute(ref FadeBoxData fadeBoxData)
-    {
-        fadeBoxData.fadeCount   = 0;
-        fadeBoxData.isFading    = false;
-        fadeBoxData.isFadingOut = false;
-        fadeBoxData.newColor    = new Color(0, 0, 0, 0);
-    }
+    public void Execute(FadeBoxAspect fadeBoxAspect) => fadeBoxAspect.ResetFadeBoxValues();
 }
 [BurstCompile]
-public partial struct MoveFadeBox : IJobEntity
+public partial struct UpdateFadeBoxPositionJob : IJobEntity
 {
     public EntityCommandBuffer ecb;
-    public EntityManager entityManager;
-    
-    public void Execute(in FadeBoxData fadeBoxData, Entity entity)
-    {
-        LocalTransform fadeBoxTransform = new LocalTransform()
-        {
-            Position = new float3(fadeBoxData.newPosition.x, fadeBoxData.newPosition.y, 0f),
-            Rotation = Quaternion.identity,
-            Scale = 1f
-        };
-        ecb.SetComponent<LocalTransform>(entity, fadeBoxTransform);
-    }
+    public void Execute(FadeBoxAspect fadeBoxAspect, Entity entity) => fadeBoxAspect.UpdateFadeBoxPosition(ecb, entity);
 }

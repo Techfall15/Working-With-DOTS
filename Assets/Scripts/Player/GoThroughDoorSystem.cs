@@ -64,23 +64,7 @@ public partial struct GoThroughDoorSystem : ISystem
 public partial struct SpawnQuestionMarkJob : IJobEntity
 {
     public EntityCommandBuffer ecb;
-
-    public void Execute(ref TestNPCData npcData, in LocalTransform npcTransform)
-    {
-
-        if(npcData.canSpawnQuestionMark == true && npcData.alreadySpawnedQuestionMark == false)
-        {
-            Entity          questionMark            = ecb.Instantiate(npcData.questionMarkEntity);
-            LocalTransform  questionMarkTransform   = new LocalTransform()
-            {
-                Position    = new float3(npcTransform.Position.x, npcTransform.Position.y + 1.25f, npcTransform.Position.z),
-                Rotation    = Quaternion.identity,
-                Scale       = 1f
-            };
-            npcData.alreadySpawnedQuestionMark = true;
-            ecb.SetComponent<LocalTransform>(questionMark, questionMarkTransform);
-        }
-    }
+    public void Execute(TestNPCAspect npcAspect) => npcAspect.SpawnAndSetNewQuestionMark(ecb);
 }
 [BurstCompile]
 public partial struct SetNewPlayerPositionJob : IJobEntity
@@ -104,11 +88,7 @@ public partial struct SetNewPlayerPositionJob : IJobEntity
 public partial struct UpdateFadeBoxJob : IJobEntity
 {
     public float3 newSpawnLocation;
-    public void Execute(ref FadeBoxData fadeBoxData, in LocalTransform fadeBoxTransform)
-    {
-        if (fadeBoxData.fadeCount < 2) fadeBoxData.isFading = true;
-        fadeBoxData.newPosition = newSpawnLocation;
-    }
+    public void Execute(FadeBoxAspect fadeBoxAspect) => fadeBoxAspect.SetNewFadeBoxPosition(newSpawnLocation);
 }
 [BurstCompile]
 public partial struct SetTargetDoorJob : IJobEntity
