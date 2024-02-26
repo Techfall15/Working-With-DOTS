@@ -27,8 +27,8 @@ public partial struct WoodenDoorOpenCloseSpawner : ISystem
         public NativeArray<Entity>  triggered;
         public void Execute(TriggerEvent triggerEvent)
         {
-            Entity door         = triggerEvent.EntityA;
-            Entity player       = triggerEvent.EntityB;
+            Entity door         = (entityManager.HasComponent<WoodenDoorData>(triggerEvent.EntityA))      ? triggerEvent.EntityA : triggerEvent.EntityB;
+            Entity player       = (entityManager.HasComponent<PlayerTagComponent>(triggerEvent.EntityB))    ? triggerEvent.EntityB : triggerEvent.EntityA;
 
             openState[0]        = (entityManager.HasComponent<PlayerTagComponent>(player)) ? 1 : 0;
             triggered[0]        = door;
@@ -88,50 +88,19 @@ public partial struct DestroyOpenDoorEntityJob : IJobEntity
 public partial struct ResetWoodenDoorsJob : IJobEntity
 {
     public EntityCommandBuffer ecb;
-    public void Execute(ref WoodenDoorData doorData)
-    {
-        if(doorData.isOpen == true)
-        {
-            doorData.isOpen = false;
-            doorData.hasOpenDoorBeenSpawned = false;
-            ecb.Instantiate(doorData.closeDoorEntityAudioSource);
-        }
-    }
+    public void Execute(WoodenDoorAspect doorAspect) => doorAspect.ResetDoorData(ecb);
 }
 [BurstCompile]
 public partial struct CheckPlayerCollisionJob : IJobEntity
 {
     public NativeArray<Entity> triggeredEntities;
-    public void Execute(ref WoodenDoorData doorData, Entity entity)
-    {
-        doorData.isOpen = ((entity == triggeredEntities[0]) == true) ? true : false;
-    }
+    public void Execute(WoodenDoorAspect doorAspect, Entity entity) => doorAspect.SetIsOpenTo((entity == triggeredEntities[0]));
 }
 [BurstCompile]
 public partial struct OpenDoorEntitySpawnJob : IJobEntity
 {
     public EntityCommandBuffer ecb;
-    public void Execute(ref WoodenDoorData doorData, in LocalTransform localTransform, Entity entity)
-    {
-        if(doorData.isOpen == true && doorData.hasOpenDoorBeenSpawned == false)
-        {
-            // Spawn open door entity and set transform next to the door
-            Entity newOpenDoorEntity            = ecb.Instantiate(doorData.openDoorEntity);
-            float3 doorPos                      = localTransform.Position;
-
-            LocalTransform openDoorTransform    = new LocalTransform()
-            {
-                Position = new float3(doorPos.x - 0.9f, doorPos.y, doorPos.z),
-                Rotation = Quaternion.identity,
-                Scale = 1f
-            };
-            // Change 'hasOpenDoorBeenSpawned' to true, so only 1 gets spawned
-            doorData.hasOpenDoorBeenSpawned = true;
-            ecb.Instantiate(doorData.openDoorEntityAudioSource);
-            // Set the spawn position of the open door entity
-            ecb.SetComponent<LocalTransform>(newOpenDoorEntity, openDoorTransform);
-        }
-    }
+    public void Execute(WoodenDoorAspect doorAspect) => doorAspect.SpawnAndSetNewOpenDoor(ecb);
 }
 
 #endregion

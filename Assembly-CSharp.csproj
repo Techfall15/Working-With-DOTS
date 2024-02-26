@@ -134,6 +134,7 @@
     <Compile Include="Assets\Scripts\Medals\MedalData.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\QuestionMarkSpriteHandler.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShootAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorAspect.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\QuestionMarkDataAuthoring.cs" />
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntityAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreAuthoring.cs" />
