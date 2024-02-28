@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MousePositionAction",
+                    "type": "Value",
+                    "id": "4f208ddd-fb16-4cd9-bd6c-9c0b217198c1",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -168,6 +177,17 @@
                     "processors": "",
                     "groups": "KeyboardInputs",
                     "action": "GoThroughDoorAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0949e40-14d9-44ca-8732-6b42fcd1e881",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardInputs",
+                    "action": "MousePositionAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

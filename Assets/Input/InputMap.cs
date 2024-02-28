@@ -80,6 +80,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePositionAction"",
+                    ""type"": ""Value"",
+                    ""id"": ""4f208ddd-fb16-4cd9-bd6c-9c0b217198c1"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""GoThroughDoorAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0949e40-14d9-44ca-8732-6b42fcd1e881"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardInputs"",
+                    ""action"": ""MousePositionAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -212,6 +232,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_KeyboardMap_SpawnMedalAction = m_KeyboardMap.FindAction("SpawnMedalAction", throwIfNotFound: true);
         m_KeyboardMap_OpenChestAction = m_KeyboardMap.FindAction("OpenChestAction", throwIfNotFound: true);
         m_KeyboardMap_GoThroughDoorAction = m_KeyboardMap.FindAction("GoThroughDoorAction", throwIfNotFound: true);
+        m_KeyboardMap_MousePositionAction = m_KeyboardMap.FindAction("MousePositionAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -279,6 +300,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardMap_SpawnMedalAction;
     private readonly InputAction m_KeyboardMap_OpenChestAction;
     private readonly InputAction m_KeyboardMap_GoThroughDoorAction;
+    private readonly InputAction m_KeyboardMap_MousePositionAction;
     public struct KeyboardMapActions
     {
         private @InputMap m_Wrapper;
@@ -289,6 +311,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @SpawnMedalAction => m_Wrapper.m_KeyboardMap_SpawnMedalAction;
         public InputAction @OpenChestAction => m_Wrapper.m_KeyboardMap_OpenChestAction;
         public InputAction @GoThroughDoorAction => m_Wrapper.m_KeyboardMap_GoThroughDoorAction;
+        public InputAction @MousePositionAction => m_Wrapper.m_KeyboardMap_MousePositionAction;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -316,6 +339,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @GoThroughDoorAction.started += instance.OnGoThroughDoorAction;
             @GoThroughDoorAction.performed += instance.OnGoThroughDoorAction;
             @GoThroughDoorAction.canceled += instance.OnGoThroughDoorAction;
+            @MousePositionAction.started += instance.OnMousePositionAction;
+            @MousePositionAction.performed += instance.OnMousePositionAction;
+            @MousePositionAction.canceled += instance.OnMousePositionAction;
         }
 
         private void UnregisterCallbacks(IKeyboardMapActions instance)
@@ -338,6 +364,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @GoThroughDoorAction.started -= instance.OnGoThroughDoorAction;
             @GoThroughDoorAction.performed -= instance.OnGoThroughDoorAction;
             @GoThroughDoorAction.canceled -= instance.OnGoThroughDoorAction;
+            @MousePositionAction.started -= instance.OnMousePositionAction;
+            @MousePositionAction.performed -= instance.OnMousePositionAction;
+            @MousePositionAction.canceled -= instance.OnMousePositionAction;
         }
 
         public void RemoveCallbacks(IKeyboardMapActions instance)
@@ -372,5 +401,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnSpawnMedalAction(InputAction.CallbackContext context);
         void OnOpenChestAction(InputAction.CallbackContext context);
         void OnGoThroughDoorAction(InputAction.CallbackContext context);
+        void OnMousePositionAction(InputAction.CallbackContext context);
     }
 }

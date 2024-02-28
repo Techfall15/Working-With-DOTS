@@ -9,4 +9,5 @@ public struct InputData : IComponentData
     public bool spawnMedal;
     public bool openChest;
     public bool goThoughDoor;
+    public float2 mousePos;
 }
