@@ -72,7 +72,6 @@
     <Analyzer Include="C:\Users\marti\Working With DOTS\Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities\SourceGenerators\Unity.Entities.SourceGen.JobEntityGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Basic\TestNPCDataAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\ExclamationPointDataAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\ExclamationPointSpriteData.cs" />
     <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestOpenCloseSystem.cs" />
@@ -91,6 +90,7 @@
     <Compile Include="Assets\Scripts\Capsules\CapsuleMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\ExclamationPointData.cs" />
     <Compile Include="Assets\Scripts\Basic\SceneChanges\FadeBoxDataAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Bonsai Tree\BonsaiTreeDataAuthoring.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Movement\MoveWithKeyboardSystem.cs" />
@@ -115,8 +115,8 @@
     <Compile Include="Assets\Scripts\Player\PlayerInteractData.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\QuestionMarkData.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeedAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Bonsai Tree\BonsaiTreeSpriteData.cs" />
     <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorOpenCloseSpawner.cs" />
-    <Compile Include="Assets\Scripts\Basic\TestNPCData.cs" />
     <Compile Include="Assets\Scripts\Basic\SceneChanges\FadeBoxData.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Spawning\SpawnNewEntityAuthoring.cs" />
@@ -124,6 +124,8 @@
     <Compile Include="Assets\Scripts\Beam\BeamCounterController.cs" />
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntitySpeed.cs" />
     <Compile Include="Assets\Scripts\Triangles\TriRotateSystem.cs" />
+    <Compile Include="Assets\Scripts\Basic\NPC\TestNPCAspect.cs" />
+    <Compile Include="Assets\Scripts\Basic\NPC\TestNPCDataAuthoring.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamData.cs" />
     <Compile Include="Assets\Scripts\Basic\Destroying\OffScreenDestroyTag.cs" />
     <Compile Include="Assets\Scripts\Medals\MedalSpawnSystem.cs" />
@@ -134,6 +136,8 @@
     <Compile Include="Assets\Scripts\Health Bar Entity\FillAuthoring.cs" />
     <Compile Include="Assets\Scripts\Medals\MedalData.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\QuestionMarkSpriteHandler.cs" />
+    <Compile Include="Assets\Scripts\Basic\NPC\TestNPCQuestionMarkHandler.cs" />
+    <Compile Include="Assets\Scripts\Bonsai Tree\BonsaiTreeSpriteHandler.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShootAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorAspect.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\QuestionMarkDataAuthoring.cs" />
@@ -148,6 +152,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerMoveAuthoring.cs" />
     <Compile Include="Assets\Scripts\InputData.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamSpawnerData.cs" />
+    <Compile Include="Assets\Scripts\Basic\NPC\TestNPCData.cs" />
     <Compile Include="Assets\Scripts\Basic\Destroying\TimeDelayDestroySystem.cs" />
     <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorData.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSquareSystem.cs" />
@@ -166,8 +171,12 @@
     <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestParticleHandler.cs" />
     <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestAuthoring.cs" />
     <Compile Include="Assets\Scripts\Hexagons\HexagonMoveSpeed.cs" />
+    <Compile Include="Assets\Scripts\Basic\Pick Ups\GoldCoinDataAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInteractAuthoring.cs" />
+    <Compile Include="Assets\Scripts\Basic\Pick Ups\GoldCoinSpriteHandler.cs" />
+    <Compile Include="Assets\Scripts\Basic\Pick Ups\GoldCoinData.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleSlidingSystem.cs" />
+    <Compile Include="Assets\Scripts\Bonsai Tree\BonsaiTreeData.cs" />
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Circles\SlidingSpeed.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAspect.cs" />
@@ -175,12 +184,10 @@
     <Compile Include="Assets\Scripts\Player\PlayerMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntityMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleRotationAuthoring.cs" />
-    <Compile Include="Assets\Scripts\Basic\TestNPCQuestionMarkHandler.cs" />
     <Compile Include="Assets\Scripts\Isometric Diamonds\DiamondMoveSpeed.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Spawning\SpawnOnMouseClickAuthoring.cs" />
     <Compile Include="Assets\Scripts\Medals\MedalCollisionEventSystem.cs" />
-    <Compile Include="Assets\Scripts\Basic\TestNPCAspect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

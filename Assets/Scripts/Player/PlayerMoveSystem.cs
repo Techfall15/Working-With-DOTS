@@ -16,7 +16,7 @@ public partial struct PlayerMoveSystem : ISystem
         //PlayerMoveJob playerMoveJob = new PlayerMoveJob { deltaTime = SystemAPI.Time.DeltaTime };
         //playerMoveJob.Schedule();
         
-        foreach(var (inputData, localTransform) in SystemAPI.Query<RefRO<InputData>, RefRO<LocalTransform>>().WithAll<PlayerTagComponent>())
+        foreach(var (inputData, localTransform, entity) in SystemAPI.Query<RefRO<InputData>, RefRO<LocalTransform>>().WithAll<PlayerTagComponent>().WithEntityAccess())
         {
             Vector2 sceneMousePos = inputData.ValueRO.mousePos;
             
@@ -24,7 +24,7 @@ public partial struct PlayerMoveSystem : ISystem
             if (Input.GetMouseButtonDown(0))
             {
                 var distanceAway = Vector2.Distance(ray.origin, (Vector3)localTransform.ValueRO.Position);
-                if (distanceAway < 0.5f) Debug.Log("Player should have been clicked on!");
+                if (distanceAway < 0.5f) Debug.Log(state.EntityManager.GetName(entity) + " should have been clicked on!");
             }
         }
     }
