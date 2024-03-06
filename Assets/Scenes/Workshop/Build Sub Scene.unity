@@ -767,6 +767,30 @@ MonoBehaviour:
   canSpawnQuestionMark: 0
   alreadySpawnedQuestionMark: 0
   questionMarkEntity: {fileID: 5116597957446382826, guid: c108ed3591ece684386af2fe36dc3979, type: 3}
+--- !u!1 &863858486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7933550826527833268, guid: b59ef33bde4e62f4f8532cf63909bb43, type: 3}
+  m_PrefabInstance: {fileID: 2951264370453592683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &863858495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863858486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d97e507e19c0e447bd14ab0b2ff8a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenClicked: 0
+  xSize: 0.5
+  ySize: 0.5
+  spawnPos:
+    x: 0
+    y: 1.25
+  entityToSpawn: {fileID: 5116597957446382826, guid: c108ed3591ece684386af2fe36dc3979, type: 3}
 --- !u!1001 &968185201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1133,7 +1157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 771089eebfbd1a945a1390bca895e9bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1587,7 +1611,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7933550826527833268, guid: b59ef33bde4e62f4f8532cf63909bb43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 863858495}
   m_SourcePrefab: {fileID: 100100000, guid: b59ef33bde4e62f4f8532cf63909bb43, type: 3}
 --- !u!1001 &8429752309408254675
 PrefabInstance:

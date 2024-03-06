@@ -116,6 +116,7 @@
     <Compile Include="Assets\Scripts\Player\Interactions\QuestionMarkData.cs" />
     <Compile Include="Assets\Scripts\Squares\RotateSpeedAuthoring.cs" />
     <Compile Include="Assets\Scripts\Bonsai Tree\BonsaiTreeSpriteData.cs" />
+    <Compile Include="Assets\Scripts\Basic\Player\PlayerOnClickData.cs" />
     <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorOpenCloseSpawner.cs" />
     <Compile Include="Assets\Scripts\Basic\SceneChanges\FadeBoxData.cs" />
     <Compile Include="Assets\Scripts\Health Bar Entity\HealthBarAuthoring.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Assets\Scripts\Bonsai Tree\BonsaiTreeSpriteHandler.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShootAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Wooden Door\WoodenDoorAspect.cs" />
+    <Compile Include="Assets\Scripts\Basic\Player\PlayerOnClickAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\QuestionMarkDataAuthoring.cs" />
     <Compile Include="Assets\Scripts\ObjEntity\ObjEntityAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreAuthoring.cs" />
@@ -174,6 +176,7 @@
     <Compile Include="Assets\Scripts\Basic\Pick Ups\GoldCoinDataAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInteractAuthoring.cs" />
     <Compile Include="Assets\Scripts\Basic\Pick Ups\GoldCoinSpriteHandler.cs" />
+    <Compile Include="Assets\Scripts\Basic\Player\PlayerOnClickHandler.cs" />
     <Compile Include="Assets\Scripts\Basic\Pick Ups\GoldCoinData.cs" />
     <Compile Include="Assets\Scripts\Circles\CircleSlidingSystem.cs" />
     <Compile Include="Assets\Scripts\Bonsai Tree\BonsaiTreeData.cs" />
