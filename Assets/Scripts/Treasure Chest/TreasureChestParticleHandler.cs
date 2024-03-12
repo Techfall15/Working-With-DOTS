@@ -33,5 +33,6 @@ public partial struct TreasureChestParticleHandler : ISystem
         }
 
         ecb.Playback(state.EntityManager);
+        ecb.Dispose();
     }
 }

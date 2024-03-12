@@ -34,6 +34,7 @@ public partial struct InteractEntityFollowingSystem : ISystem
             ecb.SetComponent<LocalTransform>(entity, newEntityPos);
         }
         ecb.Playback(state.EntityManager);
+        ecb.Dispose();
     }
 
 

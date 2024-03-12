@@ -72,6 +72,7 @@ public partial struct WoodenDoorOpenCloseSpawner : ISystem
         ecb.Playback(state.EntityManager);
         openState.Dispose();
         triggered.Dispose();
+        ecb.Dispose();
     }
 
 

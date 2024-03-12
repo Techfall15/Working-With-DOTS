@@ -54,6 +54,7 @@ public partial struct BeamSpawnSystem : ISystem
         }
         
         ecb.Playback(state.EntityManager);
+        ecb.Dispose();
     }
 
 }

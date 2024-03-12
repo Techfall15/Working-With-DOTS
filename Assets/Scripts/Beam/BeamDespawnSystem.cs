@@ -24,6 +24,7 @@ public partial struct BeamDespawnSystem : ISystem
             }
         }
         ecb.Playback(state.EntityManager);
+        ecb.Dispose();
     }
 
 

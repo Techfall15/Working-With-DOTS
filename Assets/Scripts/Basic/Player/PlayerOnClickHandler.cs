@@ -44,7 +44,7 @@ public partial struct PlayerOnClickHandler : ISystem
             }
         }
         ecb.Playback(state.EntityManager);
-
+        ecb.Dispose();
     }
 
 

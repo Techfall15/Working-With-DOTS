@@ -37,6 +37,8 @@ public partial struct GoThroughDoorSystem : ISystem
             questionMarkJob.Schedule(state.Dependency).Complete();                    // If able, spawn a question mark over the NPC's head when the player leaves their room       
         }
         ecb.Playback(state.EntityManager);
+        targetDoor.Dispose();
+        ecb.Dispose();
     }
 
 

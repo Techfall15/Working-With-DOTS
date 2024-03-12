@@ -71,6 +71,7 @@ public partial struct FadeBoxSystem : ISystem
             renderer.color = fadeBoxAspect.fadeBoxData.ValueRO.newColor;
         }
         ecb.Playback(state.EntityManager);
+        ecb.Dispose();
     }
 }
 [BurstCompile]

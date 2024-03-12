@@ -37,6 +37,7 @@ public partial struct CircleRotationSystem : ISystem
 
 
         rotateCircleJob.Schedule();
+        rowSpeeds.Dispose();
     }
 
 }

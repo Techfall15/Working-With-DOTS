@@ -81,6 +81,7 @@ public partial struct PlayerInteractEntitySpawnHandler : ISystem
 
         ecb.Playback(state.EntityManager);
         triggerEntitySpawn.Dispose();
+        ecb.Dispose();
     }
 
 }

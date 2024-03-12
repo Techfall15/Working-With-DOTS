@@ -88,5 +88,6 @@ public partial struct MedalCollisionEventsSystem : ISystem
         scoreValues.Dispose();
         medalEntity.Dispose();
         medalEntities.Dispose();
+        ecb.Dispose();
     }
 }

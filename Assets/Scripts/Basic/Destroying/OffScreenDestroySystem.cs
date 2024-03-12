@@ -20,8 +20,8 @@ public partial struct OffScreenDestroySystem : ISystem
         destroyOffScreenEntityJob.Schedule(state.Dependency).Complete();
         ecb.Playback(state.EntityManager);
 
-        
-        
+        ecb.Dispose();
+
     }
 
 

@@ -23,6 +23,7 @@ public partial struct TimeDelayDestroySystem : ISystem
 
         countDown.Schedule(state.Dependency).Complete();
         ecb.Playback(state.EntityManager);
+        ecb.Dispose();
     }
 
 }
