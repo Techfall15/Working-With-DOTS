@@ -40,6 +40,7 @@ public partial struct PlayerOnClickHandler : ISystem
                     Scale = 1f
                 };
                 ecb.SetComponent<LocalTransform>(newQuestionMarkEntity, newQMarkTransform);
+                ecb.AddComponent<FollowPlayerHeadTag>(newQuestionMarkEntity, new FollowPlayerHeadTag() { });
                 playerClickData.ValueRW.hasBeenClickedOn = false;
             }
         }

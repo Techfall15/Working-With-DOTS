@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Player\Interactions\ExclamationPointDataAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\ExclamationPointSpriteData.cs" />
     <Compile Include="Assets\Scripts\Treasure Chest\TreasureChestOpenCloseSystem.cs" />
+    <Compile Include="Assets\Scripts\Player\Interactions\FollowPlayersHeadSystem.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamDespawnSystem.cs" />
     <Compile Include="Assets\Scripts\Basic\Destroying\OffScreenDestroySystem.cs" />
     <Compile Include="Assets\Scripts\Basic\Destroying\TimeDelayDestroyAuthoring.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Assets\Scripts\Player\Interactions\InteractEntityTagAuthoring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Treasure Chest\OpenCloseAction.cs" />
+    <Compile Include="Assets\Scripts\Player\Interactions\FollowPlayerHeadTag.cs" />
     <Compile Include="Assets\Scripts\Basic\Spawning\SpawnNewEntityData.cs" />
     <Compile Include="Assets\Scripts\Player\Interactions\InteractEntityFollowingSystem.cs" />
     <Compile Include="Assets\Scripts\Beam\BeamMoveSystem.cs" />
