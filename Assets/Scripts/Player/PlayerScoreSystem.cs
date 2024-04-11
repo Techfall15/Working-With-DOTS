@@ -18,7 +18,7 @@ public partial struct PlayerScoreSystem : ISystem
     }
 
 
-    [BurstCompile]
+    //[BurstCompile]
     public partial struct PlayerScoreTriggerEvents : ITriggerEventsJob
     {
         public NativeArray<int> scoreArray;

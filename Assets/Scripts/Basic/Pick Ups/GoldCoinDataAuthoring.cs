@@ -16,7 +16,7 @@ public class GoldCoinDataAuthoring : MonoBehaviour
 
         public override void Bake(GoldCoinDataAuthoring authoring)
         {
-            Entity entity = GetEntity(TransformUsageFlags.Dynamic);
+            Entity entity = GetEntity(TransformUsageFlags.None);
 
             AddComponent(entity, new GoldCoinData()
             {
@@ -29,6 +29,11 @@ public class GoldCoinDataAuthoring : MonoBehaviour
             AddComponentObject(entity, new GoldCoinSpriteData()
             {
                 spriteList = authoring.spriteList,
+            });
+
+            AddComponent(entity, new TriggerComponent()
+            {
+
             });
         }
 

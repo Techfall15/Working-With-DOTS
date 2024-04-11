@@ -20,13 +20,14 @@ public partial struct PlayerInteractEntitySpawnHandler : ISystem
     }
 
 
-    [BurstCompile]
+    //[BurstCompile]
     public partial struct SpawnInteractEntityEvent : ITriggerEventsJob
     {
         public EntityManager entityManager;
         public NativeArray<int> triggerEntitySpawn;
         public void Execute(TriggerEvent triggerEvent)
         {
+            if (entityManager.HasComponent<InteractableTagComponent>(triggerEvent.EntityB) == false) return;
             Entity interactEntity = triggerEvent.EntityB;
             
             // Only allow spawing if distance is half of the player size, or 0.5f.

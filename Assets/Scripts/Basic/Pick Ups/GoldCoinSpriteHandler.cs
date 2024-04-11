@@ -12,6 +12,7 @@ public partial struct GoldCoinSpriteHandler : ISystem
     public void OnUpdate(ref SystemState state)
     {
 
+        
         foreach(var (goldCoinData, entity) in SystemAPI.Query<RefRW<GoldCoinData>>().WithEntityAccess())
         {
 

@@ -5,6 +5,7 @@ using Unity.Physics.Systems;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Transforms;
+using Unity.VisualScripting;
 
 [UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateAfter(typeof(PhysicsInitializeGroup))]
@@ -17,8 +18,7 @@ public partial struct MedalCollisionEventsSystem : ISystem
     }
 
 
-
-    [BurstCompile]
+    //[BurstCompile]
     public partial struct MedalCollisionEvents : ITriggerEventsJob
     {
         public NativeArray<int> scoreValues;
@@ -26,6 +26,7 @@ public partial struct MedalCollisionEventsSystem : ISystem
         public NativeArray<Entity> medalEntity;
         public void Execute(TriggerEvent triggerEvent)
         {
+            if (entityManager.HasComponent<MedalData>(triggerEvent.EntityA) || entityManager.HasComponent<MedalData>(triggerEvent.EntityB) == false) return;
             Entity entity       = (entityManager.HasComponent<MedalData>(triggerEvent.EntityA)) ? triggerEvent.EntityA : triggerEvent.EntityB;
             var scoreValue      = entityManager.GetComponentData<MedalData>(entity).scoreValue;
 

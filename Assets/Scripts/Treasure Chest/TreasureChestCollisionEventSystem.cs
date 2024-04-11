@@ -17,7 +17,7 @@ public partial struct TreasureChestCollisionEventSystem : ISystem
     }
 
 
-    [BurstCompile]
+    //[BurstCompile]
     public partial struct TreasureChestCollisionEvents : ITriggerEventsJob
     {
         public NativeArray<int>     testCount;
